@@ -1,6 +1,6 @@
 # TinyLLM-ESP32
 
-A tiny bidirectional GRU intent-classification model, trained in PyTorch and deployed **fully on-device** on an **ESP32**, that understands free-form natural-language commands and drives real hardware (LED, 28BYJ-48 stepper motor, SG90 servo, DHT11 temperature sensor) — no cloud, no Wi-Fi, no external inference API.
+A tiny bidirectional GRU intent-classification model, trained in PyTorch and deployed **fully on-device** on an **ESP32-S3**, that understands free-form natural-language commands and drives real hardware (LED, 28BYJ-48 stepper motor, SG90 servo, DHT11 temperature sensor) — no cloud, no Wi-Fi, no external inference API.
 
 ```
 "hey could you turn the led on please"   -> action=on          target=led
@@ -130,29 +130,39 @@ tinyllm-esp32/
 
 Int8 quantization gives a **~3.5× latency reduction** and **~37% smaller flash footprint**, with the sigmoid/tanh LUT shaving a further fraction of a millisecond off on top — for **zero loss in classification accuracy** across all three variants (91.53% action, 99.71% target).
 
-![ESP32 on-device latency and flash/RAM comparison across float32, int8, and hybrid variants](evaluation/latency_comparison.png)
+#### Latency
+
+![ESP32 on-device inference latency across float32, int8, and hybrid variants](evaluation/latency_comparison.png)
+
+#### Flash & RAM usage
 
 ![Flash and RAM usage per variant](evaluation/flash_ram_comparison.png)
 
-### Accuracy
+RAM usage is effectively flat across variants (~21 KB, dominated by the input/hidden-state buffers, not the weights) — quantization only pays off on flash. Flash drops from 584 KB down to 358 KB once weights move from float32 to int8, since the biases stay float32 but every weight matrix (embedding, both GRU directions, both matmuls) is 4× smaller per element.
+
+#### Accuracy by variant
 
 ![Validation action and target accuracy by quantization variant](evaluation/accuracy_comparison.png)
+
+#### Confusion matrices
 
 ![Action confusion matrix](evaluation/confusion_action.png)
 
 ![Target confusion matrix](evaluation/confusion_target.png)
 
-### Training curve
+#### Training curve
 
 ![Training loss and validation accuracy over epochs](evaluation/training_curve.png)
 
-### Value regression
+#### Value regression
 
 ![True vs predicted numeric value on the validation set](evaluation/value_scatter.png)
 
-### Accuracy / latency tradeoff
+#### Accuracy / latency tradeoff
 
 ![Accuracy vs latency tradeoff across quantization variants](evaluation/accuracy_latency_tradeoff.png)
+
+The hybrid variant sits at the Pareto-optimal corner: same accuracy as float32, same flash/RAM as plain int8, but the fastest latency of the three thanks to the LUT-based sigmoid/tanh.
 
 ---
 
