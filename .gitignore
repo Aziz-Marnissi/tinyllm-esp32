@@ -9,3 +9,4 @@ test_inf
 __pycache__/
 *.pyc
 .~lock*
+__pycache__/
