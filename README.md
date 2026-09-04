@@ -1,6 +1,6 @@
 # TinyLLM-ESP32
 
-A tiny bidirectional GRU intent-classification model, trained in PyTorch and deployed **fully on-device** on an **ESP32-S3**, that understands free-form natural-language commands and drives real hardware (LED, 28BYJ-48 stepper motor, SG90 servo, DHT11 temperature sensor) — no cloud, no Wi-Fi, no external inference API.
+A tiny bidirectional GRU intent-classification model, trained in PyTorch and deployed **fully on-device** on an **ESP32**, that understands free-form natural-language commands and drives real hardware (LED, 28BYJ-48 stepper motor, SG90 servo, DHT11 temperature sensor) — no cloud, no Wi-Fi, no external inference API.
 
 ```
 "hey could you turn the led on please"   -> action=on          target=led
@@ -18,7 +18,7 @@ Robust to typos ("trun"), politeness padding ("could you... please"), and reorde
 
 | Component | Model | Qty | Role |
 |---|---|---|---|
-| MCU | ESP32-S3 (dev board) | 1 | Runs tokenizer + GRU inference + hardware control |
+| MCU | ESP32 (dev board) | 1 | Runs tokenizer + GRU inference + hardware control |
 | LED | 5 mm generic | 1 | Binary on/off + (future) PWM brightness target |
 | Stepper motor | 28BYJ-48 | 1 | Half-step sequence driven target |
 | Stepper driver | ULN2003 | 1 | Drives the 4 stepper coil lines from GPIO |
@@ -28,7 +28,7 @@ Robust to typos ("trun"), politeness padding ("could you... please"), and reorde
 
 ### Wiring
 
-| ESP32-S3 GPIO | Connects to | Notes |
+| ESP32 GPIO | Connects to | Notes |
 |---|---|---|
 | `GPIO 2`  | LED anode (+ series resistor to GND) | `LED_PIN` |
 | `GPIO 5`  | Servo signal wire | `SERVO_PIN`; servo power (5V) + GND from external/board 5V rail |
@@ -118,7 +118,7 @@ tinyllm-esp32/
 
 ## 4. Results
 
-### Quantization comparison (measured on-device, ESP32-S3)
+### Quantization comparison (measured on-device, ESP32)
 
 | Variant | Latency | Flash | RAM | Action acc. | Target acc. |
 |---|---|---|---|---|---|
