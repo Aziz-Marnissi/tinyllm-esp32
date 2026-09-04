@@ -1,0 +1,11 @@
+.pio/
+*.o
+*.a
+*.elf
+*.bin
+eval_acc
+eval_debug
+test_inf
+__pycache__/
+*.pyc
+.~lock*
