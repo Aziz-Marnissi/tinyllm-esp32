@@ -1,0 +1,63 @@
+#include <math.h>
+#include "lut_math.h"
+#include <string.h>
+#include "weights.h"
+
+#define MAX_LEN 12
+
+
+// One GRU timestep. x: [EMB_DIM], h: [HIDDEN] (in/out, updated in place).
+// Gate layout in W_ih/W_hh/b_ih/b_hh is [reset, update, new], each block HIDDEN rows.
+static void gru_step(const float* x, float* h) {
+    float gi[3 * HIDDEN]; // W_ih . x + b_ih
+    float gh[3 * HIDDEN]; // W_hh . h + b_hh
+
+    for (int g = 0; g < 3 * HIDDEN; g++) {
+        float sum_i = GRU_B_IH[g];
+        for (int k = 0; k < EMB_DIM; k++)
+            sum_i += GRU_W_IH[g * EMB_DIM + k] * x[k];
+        gi[g] = sum_i;
+
+        float sum_h = GRU_B_HH[g];
+        for (int k = 0; k < HIDDEN; k++)
+            sum_h += GRU_W_HH[g * HIDDEN + k] * h[k];
+        gh[g] = sum_h;
+    }
+
+    float new_h[HIDDEN];
+    for (int j = 0; j < HIDDEN; j++) {
+        float r = fast_sigmoid(gi[j] + gh[j]);
+        float z = fast_sigmoid(gi[HIDDEN + j] + gh[HIDDEN + j]);
+        float n = fast_tanh(gi[2 * HIDDEN + j] + r * gh[2 * HIDDEN + j]);
+        new_h[j] = (1.0f - z) * n + z * h[j];
+    }
+    memcpy(h, new_h, sizeof(new_h));
+}
+
+// Runs embedding + GRU over the token ids, then the 3 output heads.
+// action_logits: [N_ACTIONS], target_logits: [N_TARGETS], value_out: scalar in [0,1].
+void model_forward(const int ids[MAX_LEN], float action_logits[N_ACTIONS],
+                    float target_logits[N_TARGETS], float* value_out) {
+    float h[HIDDEN];
+    memset(h, 0, sizeof(h));
+
+    for (int t = 0; t < MAX_LEN; t++) {
+        int id = ids[t];
+        const float* emb = &EMBED_W[id * EMB_DIM];
+        gru_step(emb, h);
+    }
+
+    for (int a = 0; a < N_ACTIONS; a++) {
+        float sum = ACTION_B[a];
+        for (int k = 0; k < HIDDEN; k++) sum += ACTION_W[a * HIDDEN + k] * h[k];
+        action_logits[a] = sum;
+    }
+    for (int a = 0; a < N_TARGETS; a++) {
+        float sum = TARGET_B[a];
+        for (int k = 0; k < HIDDEN; k++) sum += TARGET_W[a * HIDDEN + k] * h[k];
+        target_logits[a] = sum;
+    }
+    float v = VALUE_B[0];
+    for (int k = 0; k < HIDDEN; k++) v += VALUE_W[k] * h[k];
+    *value_out = fast_sigmoid(v);
+}

@@ -1,0 +1,1140 @@
+{"text": "light up the lamp", "action": "on", "target": "led", "value": null}
+{"text": "hmm stop the led now", "action": "off", "target": "led", "value": null}
+{"text": "ok fire up led asap", "action": "on", "target": "led", "value": null}
+{"text": "set light level to 13", "action": "set_power", "target": "led", "value": 13}
+{"text": "turn on led please", "action": "on", "target": "led", "value": null}
+{"text": "please move servo to 85 degrees please", "action": "set_degree", "target": "servo", "value": 85}
+{"text": "power down the servo motor asap", "action": "off", "target": "servo", "value": null}
+{"text": "please deactivate the servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "please turn on the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please enable the servo motor please", "action": "on", "target": "servo", "value": null}
+{"text": "hey pls stop stepper motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo turn the servo to 166 degrees please", "action": "set_degree", "target": "servo", "value": 166}
+{"text": "please cut off 28byj48 now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo to 180 degree thanks", "action": "set_degree", "target": "servo", "value": 180}
+{"text": "move servo to 80 degrees thanks", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "hey disengage 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo switch the light on thanks", "action": "on", "target": "led", "value": null}
+{"text": "hmm brightness 46", "action": "set_power", "target": "led", "value": 46}
+{"text": "deactivate lamp please", "action": "off", "target": "led", "value": null}
+{"text": "led at 43% now", "action": "set_power", "target": "led", "value": 43}
+{"text": "move servo to 142 degrees asap", "action": "set_degree", "target": "servo", "value": 142}
+{"text": "hey set the servo motor to 165 degree", "action": "set_degree", "target": "servo", "value": 165}
+{"text": "hey can you start 28byj48 now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "stop the motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please point servo to 71 degrees now", "action": "set_degree", "target": "servo", "value": 71}
+{"text": "rotate servo 157 degrees thanks", "action": "set_degree", "target": "servo", "value": 157}
+{"text": "stop 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please enable the servo", "action": "on", "target": "servo", "value": null}
+{"text": "ok switch off light asap", "action": "off", "target": "led", "value": null}
+{"text": "ok brightness 9 now", "action": "set_power", "target": "led", "value": 9}
+{"text": "hmm led at 14% please", "action": "set_power", "target": "led", "value": 14}
+{"text": "turn on servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "yo start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo run the 28byj48 motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "turn on servo", "action": "on", "target": "servo", "value": null}
+{"text": "yo put lamp at 89 percent", "action": "set_power", "target": "led", "value": 89}
+{"text": "please deactivate servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "i want the led on now", "action": "on", "target": "led", "value": null}
+{"text": "yo servo go to 109 please", "action": "set_degree", "target": "servo", "value": 109}
+{"text": "deactivate the servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "please increase the lamp brightness to 69 thanks", "action": "set_power", "target": "led", "value": 69}
+{"text": "led brightness 87", "action": "set_power", "target": "led", "value": 87}
+{"text": "turn off the servo now", "action": "off", "target": "servo", "value": null}
+{"text": "ok set led power to 64 please", "action": "set_power", "target": "led", "value": 64}
+{"text": "yo dim led to 33 percent thanks", "action": "set_power", "target": "led", "value": 33}
+{"text": "yo i want light on", "action": "on", "target": "led", "value": null}
+{"text": "start the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please servo on asap", "action": "on", "target": "servo", "value": null}
+{"text": "please servo off now", "action": "off", "target": "servo", "value": null}
+{"text": "please set servo motor to 22 degree thanks", "action": "set_degree", "target": "servo", "value": 22}
+{"text": "please deactivate the lamp now", "action": "off", "target": "led", "value": null}
+{"text": "ok led off please", "action": "off", "target": "led", "value": null}
+{"text": "hey set servo angle to 110 asap", "action": "set_degree", "target": "servo", "value": 110}
+{"text": "hmm point the servo motor to 20 degrees thanks", "action": "set_degree", "target": "servo", "value": 20}
+{"text": "ok switch off the lamp", "action": "off", "target": "led", "value": null}
+{"text": "ok servo to 3 thanks", "action": "set_degree", "target": "servo", "value": 3}
+{"text": "get stepper motor running thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please can you turn off the light thanks", "action": "off", "target": "led", "value": null}
+{"text": "yo increase the led brightness to 26 please", "action": "set_power", "target": "led", "value": 26}
+{"text": "start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok power down light", "action": "off", "target": "led", "value": null}
+{"text": "please please start stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey fire up the lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "yo trun off light now", "action": "off", "target": "led", "value": null}
+{"text": "yo start the light thanks", "action": "on", "target": "led", "value": null}
+{"text": "hey dim led to 82 percent please", "action": "set_power", "target": "led", "value": 82}
+{"text": "ok led brightness 48", "action": "set_power", "target": "led", "value": 48}
+{"text": "yo enable the servo motor please", "action": "on", "target": "servo", "value": null}
+{"text": "hmm set light to 13 percent", "action": "set_power", "target": "led", "value": 13}
+{"text": "hmm i want led off thanks", "action": "off", "target": "led", "value": null}
+{"text": "stop the stepper motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "move servo to 8 please", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "shut down stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo led at 47% thanks", "action": "set_power", "target": "led", "value": 47}
+{"text": "hey shut down the lamp thanks", "action": "off", "target": "led", "value": null}
+{"text": "turn the servo to 112 degrees", "action": "set_degree", "target": "servo", "value": 112}
+{"text": "hey can you stop the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "trun off the light now", "action": "off", "target": "led", "value": null}
+{"text": "hmm power up servo please", "action": "on", "target": "servo", "value": null}
+{"text": "the servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "hmm get lamp off now", "action": "off", "target": "led", "value": null}
+{"text": "turn the led on", "action": "on", "target": "led", "value": null}
+{"text": "make the led 67 percent", "action": "set_power", "target": "led", "value": 67}
+{"text": "hmm turn off the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm point the servo to 152 degrees now", "action": "set_degree", "target": "servo", "value": 152}
+{"text": "yo set light to 77 percent asap", "action": "set_power", "target": "led", "value": 77}
+{"text": "yo run the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "turn the servo to 111 degrees thanks", "action": "set_degree", "target": "servo", "value": 111}
+{"text": "hmm turn on the light", "action": "on", "target": "led", "value": null}
+{"text": "turn off led", "action": "off", "target": "led", "value": null}
+{"text": "please stop lamp now", "action": "off", "target": "led", "value": null}
+{"text": "hmm brightness 92 thanks", "action": "set_power", "target": "led", "value": 92}
+{"text": "turn off the 28byj48 motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "the servo motor on asap", "action": "on", "target": "servo", "value": null}
+{"text": "hey i want the led on", "action": "on", "target": "led", "value": null}
+{"text": "move servo to 80 degrees", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "brighten led to 59 percent asap", "action": "set_power", "target": "led", "value": 59}
+{"text": "light off", "action": "off", "target": "led", "value": null}
+{"text": "yo set servo angle to 21", "action": "set_degree", "target": "servo", "value": 21}
+{"text": "make the led 77 percent", "action": "set_power", "target": "led", "value": 77}
+{"text": "can you turn off light thanks", "action": "off", "target": "led", "value": null}
+{"text": "set light level to 74", "action": "set_power", "target": "led", "value": 74}
+{"text": "hmm increase light brightness to 71", "action": "set_power", "target": "led", "value": 71}
+{"text": "please shut down the 28byj48 motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm stop 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo motor off asap", "action": "off", "target": "servo", "value": null}
+{"text": "hey set light level to 50", "action": "set_power", "target": "led", "value": 50}
+{"text": "make the led 68 percent", "action": "set_power", "target": "led", "value": 68}
+{"text": "yo power down the lamp thanks", "action": "off", "target": "led", "value": null}
+{"text": "run stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey set light to 11% thanks", "action": "set_power", "target": "led", "value": 11}
+{"text": "yo can you turn off the led", "action": "off", "target": "led", "value": null}
+{"text": "please engage motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok run 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo led brightness 11 now", "action": "set_power", "target": "led", "value": 11}
+{"text": "yo set light level to 41 please", "action": "set_power", "target": "led", "value": 41}
+{"text": "please get the stepper motor running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo get lamp off please", "action": "off", "target": "led", "value": null}
+{"text": "ok get lamp on", "action": "on", "target": "led", "value": null}
+{"text": "hey adjust servo to 155 degrees thanks", "action": "set_degree", "target": "servo", "value": 155}
+{"text": "brighten lamp to 99 percent", "action": "set_power", "target": "led", "value": 99}
+{"text": "ok set servo angle to 72", "action": "set_degree", "target": "servo", "value": 72}
+{"text": "yo enable the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "hey stepper motor off thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "power down the servo", "action": "off", "target": "servo", "value": null}
+{"text": "ok start light", "action": "on", "target": "led", "value": null}
+{"text": "ok turn off servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "rotate servo 2 degrees", "action": "set_degree", "target": "servo", "value": 2}
+{"text": "pls start the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo set servo motor to 83 degree asap", "action": "set_degree", "target": "servo", "value": 83}
+{"text": "disable the servo", "action": "off", "target": "servo", "value": null}
+{"text": "hey turn on motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "disengage the motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok led brightness 51 asap", "action": "set_power", "target": "led", "value": 51}
+{"text": "led at 91%", "action": "set_power", "target": "led", "value": 91}
+{"text": "hmm the servo off thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please set the led to 5% now", "action": "set_power", "target": "led", "value": 5}
+{"text": "servo go to 124 now", "action": "set_degree", "target": "servo", "value": 124}
+{"text": "rotate servo 50 degrees", "action": "set_degree", "target": "servo", "value": 50}
+{"text": "yo spin up the 28byj48 motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "make the led 96 percent thanks", "action": "set_power", "target": "led", "value": 96}
+{"text": "hmm the stepper motor off asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey make the led 15 percent", "action": "set_power", "target": "led", "value": 15}
+{"text": "please can you start the stepper motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please disable servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "hmm light up the lamp now", "action": "on", "target": "led", "value": null}
+{"text": "hmm engage motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set the lamp to 58%", "action": "set_power", "target": "led", "value": 58}
+{"text": "pls turn on light now", "action": "on", "target": "led", "value": null}
+{"text": "deactivate the lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "cut off motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm dim led to 20 percent asap", "action": "set_power", "target": "led", "value": 20}
+{"text": "can you stop stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm trun on the led please", "action": "on", "target": "led", "value": null}
+{"text": "hey can you start the stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo get the 28byj48 motor running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "cut off stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "enable servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "set the light to 47% now", "action": "set_power", "target": "led", "value": 47}
+{"text": "ok turn off servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "hmm stop the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm power up the servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "set light to 87 percent thanks", "action": "set_power", "target": "led", "value": 87}
+{"text": "ok can you turn off the led please", "action": "off", "target": "led", "value": null}
+{"text": "servo off", "action": "off", "target": "servo", "value": null}
+{"text": "increase the lamp brightness to 62 asap", "action": "set_power", "target": "led", "value": 62}
+{"text": "hmm engage the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "start led thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok spin up motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo trun off the lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "ok rotate servo motor to 80 deg thanks", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "please servo to 142 thanks", "action": "set_degree", "target": "servo", "value": 142}
+{"text": "ok increase the lamp brightness to 83", "action": "set_power", "target": "led", "value": 83}
+{"text": "hey enable the servo motor now", "action": "on", "target": "servo", "value": null}
+{"text": "hey set the servo to 70 degree", "action": "set_degree", "target": "servo", "value": 70}
+{"text": "please set servo angle to 68", "action": "set_degree", "target": "servo", "value": 68}
+{"text": "brighten the lamp to 20 percent", "action": "set_power", "target": "led", "value": 20}
+{"text": "engage 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "brighten lamp to 1 percent now", "action": "set_power", "target": "led", "value": 1}
+{"text": "please turn off 28byj48 now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo turn off servo motor now", "action": "off", "target": "servo", "value": null}
+{"text": "yo disable lamp", "action": "off", "target": "led", "value": null}
+{"text": "hey start lamp", "action": "on", "target": "led", "value": null}
+{"text": "the servo off", "action": "off", "target": "servo", "value": null}
+{"text": "hmm move servo to 78 degrees please", "action": "set_degree", "target": "servo", "value": 78}
+{"text": "ok fire up the light please", "action": "on", "target": "led", "value": null}
+{"text": "hey trun on the lamp", "action": "on", "target": "led", "value": null}
+{"text": "ok light up the lamp", "action": "on", "target": "led", "value": null}
+{"text": "yo the stepper motor off please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please enable led", "action": "on", "target": "led", "value": null}
+{"text": "set servo angle to 10", "action": "set_degree", "target": "servo", "value": 10}
+{"text": "put light at 97 percent now", "action": "set_power", "target": "led", "value": 97}
+{"text": "the servo motor on", "action": "on", "target": "servo", "value": null}
+{"text": "hey stop the light now", "action": "off", "target": "led", "value": null}
+{"text": "set servo angle to 45 asap", "action": "set_degree", "target": "servo", "value": 45}
+{"text": "hey set the servo motor to 50 degree please", "action": "set_degree", "target": "servo", "value": 50}
+{"text": "turn the servo to 157 degrees", "action": "set_degree", "target": "servo", "value": 157}
+{"text": "turn on servo please", "action": "on", "target": "servo", "value": null}
+{"text": "please start the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm i want lamp off", "action": "off", "target": "led", "value": null}
+{"text": "yo can you start the stepper motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "deactivate the servo motor now", "action": "off", "target": "servo", "value": null}
+{"text": "turn off the stepper motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo set servo angle to 25 thanks", "action": "set_degree", "target": "servo", "value": 25}
+{"text": "yo set light to 96 percent", "action": "set_power", "target": "led", "value": 96}
+{"text": "adjust servo to 168 degrees", "action": "set_degree", "target": "servo", "value": 168}
+{"text": "please led at 60%", "action": "set_power", "target": "led", "value": 60}
+{"text": "ok turn on lamp please", "action": "on", "target": "led", "value": null}
+{"text": "move servo to 9 degrees", "action": "set_degree", "target": "servo", "value": 9}
+{"text": "dim led to 65 percent now", "action": "set_power", "target": "led", "value": 65}
+{"text": "hey i want the led on please", "action": "on", "target": "led", "value": null}
+{"text": "hmm disengage stepper motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "power up the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "switch off light please", "action": "off", "target": "led", "value": null}
+{"text": "yo shut down light please", "action": "off", "target": "led", "value": null}
+{"text": "start servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "rotate servo to 59 deg", "action": "set_degree", "target": "servo", "value": 59}
+{"text": "hey set light level to 4", "action": "set_power", "target": "led", "value": 4}
+{"text": "hey turn off the light", "action": "off", "target": "led", "value": null}
+{"text": "please i want light on", "action": "on", "target": "led", "value": null}
+{"text": "hmm servo to 68", "action": "set_degree", "target": "servo", "value": 68}
+{"text": "please increase light brightness to 71 thanks", "action": "set_power", "target": "led", "value": 71}
+{"text": "set light level to 29", "action": "set_power", "target": "led", "value": 29}
+{"text": "yo power up the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "led brightness 74 now", "action": "set_power", "target": "led", "value": 74}
+{"text": "hey turn off the 28byj48 motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please the lamp on please", "action": "on", "target": "led", "value": null}
+{"text": "please can you turn off the led please", "action": "off", "target": "led", "value": null}
+{"text": "hey set led to 6%", "action": "set_power", "target": "led", "value": 6}
+{"text": "ok disable light asap", "action": "off", "target": "led", "value": null}
+{"text": "ok turn the servo to 80 degrees", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "make the led 3 percent asap", "action": "set_power", "target": "led", "value": 3}
+{"text": "enable servo thanks", "action": "on", "target": "servo", "value": null}
+{"text": "ok disengage the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok put lamp at 82 percent", "action": "set_power", "target": "led", "value": 82}
+{"text": "yo deactivate servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "please led brightness 52 asap", "action": "set_power", "target": "led", "value": 52}
+{"text": "fire up the light now", "action": "on", "target": "led", "value": null}
+{"text": "yo power up servo now", "action": "on", "target": "servo", "value": null}
+{"text": "ok deactivate the servo motor asap", "action": "off", "target": "servo", "value": null}
+{"text": "please kill led please", "action": "off", "target": "led", "value": null}
+{"text": "yo move servo to 37 degrees now", "action": "set_degree", "target": "servo", "value": 37}
+{"text": "please turn on servo", "action": "on", "target": "servo", "value": null}
+{"text": "set light to 53 percent", "action": "set_power", "target": "led", "value": 53}
+{"text": "yo increase led brightness to 33", "action": "set_power", "target": "led", "value": 33}
+{"text": "ok shut down the motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please trun on led asap", "action": "on", "target": "led", "value": null}
+{"text": "i want light off thanks", "action": "off", "target": "led", "value": null}
+{"text": "hey led at 90%", "action": "set_power", "target": "led", "value": 90}
+{"text": "can you stop motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please adjust servo to 115 degrees", "action": "set_degree", "target": "servo", "value": 115}
+{"text": "start the stepper motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey trun on the led thanks", "action": "on", "target": "led", "value": null}
+{"text": "set the led to 76%", "action": "set_power", "target": "led", "value": 76}
+{"text": "ok engage stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo motor on asap", "action": "on", "target": "servo", "value": null}
+{"text": "please engage stepper motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm shut down the light", "action": "off", "target": "led", "value": null}
+{"text": "yo adjust servo to 109 degrees thanks", "action": "set_degree", "target": "servo", "value": 109}
+{"text": "please switch off the light", "action": "off", "target": "led", "value": null}
+{"text": "please activate led now", "action": "on", "target": "led", "value": null}
+{"text": "set light level to 20", "action": "set_power", "target": "led", "value": 20}
+{"text": "increase the lamp brightness to 9", "action": "set_power", "target": "led", "value": 9}
+{"text": "please please stop the 28byj48 motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "rotate servo motor to 175 deg", "action": "set_degree", "target": "servo", "value": 175}
+{"text": "please stop stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please set led power to 72 now", "action": "set_power", "target": "led", "value": 72}
+{"text": "hey move servo motor to 34 asap", "action": "set_degree", "target": "servo", "value": 34}
+{"text": "hmm turn off servo asap", "action": "off", "target": "servo", "value": null}
+{"text": "led brightness 76 now", "action": "set_power", "target": "led", "value": 76}
+{"text": "hey can you turn off the light now", "action": "off", "target": "led", "value": null}
+{"text": "led brightness 14", "action": "set_power", "target": "led", "value": 14}
+{"text": "ok trun on the lamp now", "action": "on", "target": "led", "value": null}
+{"text": "move servo to 76 degrees asap", "action": "set_degree", "target": "servo", "value": 76}
+{"text": "yo servo to 102 please", "action": "set_degree", "target": "servo", "value": 102}
+{"text": "ok increase led brightness to 76 now", "action": "set_power", "target": "led", "value": 76}
+{"text": "ok deactivate the lamp now", "action": "off", "target": "led", "value": null}
+{"text": "can you start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo power up the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "ok can you turn off led", "action": "off", "target": "led", "value": null}
+{"text": "hey disengage motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "brighten led to 65 percent asap", "action": "set_power", "target": "led", "value": 65}
+{"text": "hey activate lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok pls start motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo can you stop the motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo deactivate servo", "action": "off", "target": "servo", "value": null}
+{"text": "get 28byj48 running please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off the light thanks", "action": "off", "target": "led", "value": null}
+{"text": "hmm set led power to 29 asap", "action": "set_power", "target": "led", "value": 29}
+{"text": "the led off asap", "action": "off", "target": "led", "value": null}
+{"text": "hey shut down 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "stepper motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo the servo on now", "action": "on", "target": "servo", "value": null}
+{"text": "please turn off motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "spin up the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "get motor running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey turn on the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "ok activate lamp asap", "action": "on", "target": "led", "value": null}
+{"text": "please start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey power up the servo please", "action": "on", "target": "servo", "value": null}
+{"text": "light up light now", "action": "on", "target": "led", "value": null}
+{"text": "yo point servo motor to 166 degrees now", "action": "set_degree", "target": "servo", "value": 166}
+{"text": "hmm led at 50%", "action": "set_power", "target": "led", "value": 50}
+{"text": "turn off the servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please i want lamp off", "action": "off", "target": "led", "value": null}
+{"text": "engage stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo angle to 13 asap", "action": "set_degree", "target": "servo", "value": 13}
+{"text": "ok deactivate the servo", "action": "off", "target": "servo", "value": null}
+{"text": "ok shut down light now", "action": "off", "target": "led", "value": null}
+{"text": "hey shut down light thanks", "action": "off", "target": "led", "value": null}
+{"text": "move servo to 48 degrees asap", "action": "set_degree", "target": "servo", "value": 48}
+{"text": "servo go to 4", "action": "set_degree", "target": "servo", "value": 4}
+{"text": "hmm point servo to 22 degrees", "action": "set_degree", "target": "servo", "value": 22}
+{"text": "hey set servo angle to 67", "action": "set_degree", "target": "servo", "value": 67}
+{"text": "hmm make the led 17 percent", "action": "set_power", "target": "led", "value": 17}
+{"text": "ok set the lamp to 35%", "action": "set_power", "target": "led", "value": 35}
+{"text": "yo pls stop 28byj48 please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo can you start the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "start the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set the light to 63% now", "action": "set_power", "target": "led", "value": 63}
+{"text": "please can you stop the motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey start the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo to 65 please", "action": "set_degree", "target": "servo", "value": 65}
+{"text": "light up lamp", "action": "on", "target": "led", "value": null}
+{"text": "please servo go to 39 now", "action": "set_degree", "target": "servo", "value": 39}
+{"text": "cut off 28byj48 please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey get the lamp on", "action": "on", "target": "led", "value": null}
+{"text": "fire up lamp now", "action": "on", "target": "led", "value": null}
+{"text": "yo servo motor off now", "action": "off", "target": "servo", "value": null}
+{"text": "hey set servo motor to 46 degree asap", "action": "set_degree", "target": "servo", "value": 46}
+{"text": "ok turn the servo to 5 degrees thanks", "action": "set_degree", "target": "servo", "value": 5}
+{"text": "please start stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "start light", "action": "on", "target": "led", "value": null}
+{"text": "adjust servo to 38 degrees now", "action": "set_degree", "target": "servo", "value": 38}
+{"text": "ok pls stop the motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "put led at 93 percent", "action": "set_power", "target": "led", "value": 93}
+{"text": "pls stop the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "trun off light", "action": "off", "target": "led", "value": null}
+{"text": "yo get the 28byj48 motor running thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm the servo off now", "action": "off", "target": "servo", "value": null}
+{"text": "yo set servo motor to 85 degree asap", "action": "set_degree", "target": "servo", "value": 85}
+{"text": "hey servo off", "action": "off", "target": "servo", "value": null}
+{"text": "ok switch off the lamp thanks", "action": "off", "target": "led", "value": null}
+{"text": "increase the lamp brightness to 17", "action": "set_power", "target": "led", "value": 17}
+{"text": "ok turn the servo to 160 degrees asap", "action": "set_degree", "target": "servo", "value": 160}
+{"text": "hmm set light level to 84", "action": "set_power", "target": "led", "value": 84}
+{"text": "hmm led brightness 20 asap", "action": "set_power", "target": "led", "value": 20}
+{"text": "yo activate light please", "action": "on", "target": "led", "value": null}
+{"text": "servo go to 93", "action": "set_degree", "target": "servo", "value": 93}
+{"text": "ok pls start the motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey shut down the light", "action": "off", "target": "led", "value": null}
+{"text": "ok can you stop motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey shut down the motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok adjust servo to 101 degrees please", "action": "set_degree", "target": "servo", "value": 101}
+{"text": "deactivate the servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "ok switch the light on asap", "action": "on", "target": "led", "value": null}
+{"text": "servo motor off thanks", "action": "off", "target": "servo", "value": null}
+{"text": "hmm disable the led thanks", "action": "off", "target": "led", "value": null}
+{"text": "ok can you start stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please start the stepper motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok fire up lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "led at 66% now", "action": "set_power", "target": "led", "value": 66}
+{"text": "set the led to 11%", "action": "set_power", "target": "led", "value": 11}
+{"text": "hey led brightness 14 please", "action": "set_power", "target": "led", "value": 14}
+{"text": "ok shut down the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "move the servo motor to 172 now", "action": "set_degree", "target": "servo", "value": 172}
+{"text": "dim led to 43 percent thanks", "action": "set_power", "target": "led", "value": 43}
+{"text": "please the lamp on", "action": "on", "target": "led", "value": null}
+{"text": "hey led at 0% thanks", "action": "set_power", "target": "led", "value": 0}
+{"text": "please increase the light brightness to 49 please", "action": "set_power", "target": "led", "value": 49}
+{"text": "yo increase the led brightness to 59 please", "action": "set_power", "target": "led", "value": 59}
+{"text": "hmm power down light thanks", "action": "off", "target": "led", "value": null}
+{"text": "ok disable servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "deactivate the servo motor asap", "action": "off", "target": "servo", "value": null}
+{"text": "hey set led power to 7 asap", "action": "set_power", "target": "led", "value": 7}
+{"text": "hey set servo angle to 156 please", "action": "set_degree", "target": "servo", "value": 156}
+{"text": "ok led brightness 82", "action": "set_power", "target": "led", "value": 82}
+{"text": "hmm the servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "please the servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "hmm increase the light brightness to 33 please", "action": "set_power", "target": "led", "value": 33}
+{"text": "yo make the led 24 percent", "action": "set_power", "target": "led", "value": 24}
+{"text": "hey fire up lamp please", "action": "on", "target": "led", "value": null}
+{"text": "please set the light to 39%", "action": "set_power", "target": "led", "value": 39}
+{"text": "pls turn on lamp now", "action": "on", "target": "led", "value": null}
+{"text": "switch led on now", "action": "on", "target": "led", "value": null}
+{"text": "please i want the light on please", "action": "on", "target": "led", "value": null}
+{"text": "please please start the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please switch led on please", "action": "on", "target": "led", "value": null}
+{"text": "ok stop led thanks", "action": "off", "target": "led", "value": null}
+{"text": "yo turn the servo to 24 degrees", "action": "set_degree", "target": "servo", "value": 24}
+{"text": "hmm brightness 82", "action": "set_power", "target": "led", "value": 82}
+{"text": "can you start motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set light to 96 percent", "action": "set_power", "target": "led", "value": 96}
+{"text": "pls stop stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok kill led please", "action": "off", "target": "led", "value": null}
+{"text": "servo to 153", "action": "set_degree", "target": "servo", "value": 153}
+{"text": "please increase light brightness to 28", "action": "set_power", "target": "led", "value": 28}
+{"text": "ok turn the servo to 137 degrees please", "action": "set_degree", "target": "servo", "value": 137}
+{"text": "make the led 30 percent", "action": "set_power", "target": "led", "value": 30}
+{"text": "led brightness 73", "action": "set_power", "target": "led", "value": 73}
+{"text": "stop motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok trun on lamp", "action": "on", "target": "led", "value": null}
+{"text": "led at 84% now", "action": "set_power", "target": "led", "value": 84}
+{"text": "hey set servo angle to 101 please", "action": "set_degree", "target": "servo", "value": 101}
+{"text": "ok switch off lamp", "action": "off", "target": "led", "value": null}
+{"text": "please set led power to 95", "action": "set_power", "target": "led", "value": 95}
+{"text": "yo power down led", "action": "off", "target": "led", "value": null}
+{"text": "start 28byj48 now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "motor off now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set light to 21 percent asap", "action": "set_power", "target": "led", "value": 21}
+{"text": "ok start the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "hey engage the 28byj48 motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set led power to 30 now", "action": "set_power", "target": "led", "value": 30}
+{"text": "yo start 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok set light to 9 percent please", "action": "set_power", "target": "led", "value": 9}
+{"text": "enable the servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "hmm spin up motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please turn the servo to 179 degrees", "action": "set_degree", "target": "servo", "value": 179}
+{"text": "ok put the light at 45 percent thanks", "action": "set_power", "target": "led", "value": 45}
+{"text": "please servo go to 147", "action": "set_degree", "target": "servo", "value": 147}
+{"text": "please point the servo to 18 degrees", "action": "set_degree", "target": "servo", "value": 18}
+{"text": "set light to 40 percent now", "action": "set_power", "target": "led", "value": 40}
+{"text": "please light up the led now", "action": "on", "target": "led", "value": null}
+{"text": "ok servo go to 94 please", "action": "set_degree", "target": "servo", "value": 94}
+{"text": "hmm set led power to 50 asap", "action": "set_power", "target": "led", "value": 50}
+{"text": "please make the led 74 percent now", "action": "set_power", "target": "led", "value": 74}
+{"text": "i want the light on", "action": "on", "target": "led", "value": null}
+{"text": "power down the light now", "action": "off", "target": "led", "value": null}
+{"text": "hmm rotate servo 112 degrees", "action": "set_degree", "target": "servo", "value": 112}
+{"text": "ok set servo angle to 98 thanks", "action": "set_degree", "target": "servo", "value": 98}
+{"text": "hey deactivate servo", "action": "off", "target": "servo", "value": null}
+{"text": "make the led 90 percent", "action": "set_power", "target": "led", "value": 90}
+{"text": "yo turn on the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "servo to 8", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "ok shut down 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please move servo to 40 degrees please", "action": "set_degree", "target": "servo", "value": 40}
+{"text": "switch led on please", "action": "on", "target": "led", "value": null}
+{"text": "hey enable light", "action": "on", "target": "led", "value": null}
+{"text": "hmm light up the light", "action": "on", "target": "led", "value": null}
+{"text": "turn on 28byj48 thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo disengage the 28byj48 motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey move servo to 174", "action": "set_degree", "target": "servo", "value": 174}
+{"text": "put light at 82 percent", "action": "set_power", "target": "led", "value": 82}
+{"text": "dim led to 90 percent asap", "action": "set_power", "target": "led", "value": 90}
+{"text": "deactivate servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "hmm start motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "start servo", "action": "on", "target": "servo", "value": null}
+{"text": "trun off light thanks", "action": "off", "target": "led", "value": null}
+{"text": "please engage the stepper motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm led brightness 5", "action": "set_power", "target": "led", "value": 5}
+{"text": "ok set light level to 26 thanks", "action": "set_power", "target": "led", "value": 26}
+{"text": "hey put the light at 49 percent", "action": "set_power", "target": "led", "value": 49}
+{"text": "please turn off motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo make the led 6 percent", "action": "set_power", "target": "led", "value": 6}
+{"text": "ok turn off the motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm engage the stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok point servo motor to 92 degrees", "action": "set_degree", "target": "servo", "value": 92}
+{"text": "servo off please", "action": "off", "target": "servo", "value": null}
+{"text": "hmm rotate servo 138 degrees", "action": "set_degree", "target": "servo", "value": 138}
+{"text": "hey servo to 170 thanks", "action": "set_degree", "target": "servo", "value": 170}
+{"text": "can you stop 28byj48 please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "disable lamp", "action": "off", "target": "led", "value": null}
+{"text": "get the led on please", "action": "on", "target": "led", "value": null}
+{"text": "hmm set led power to 15 thanks", "action": "set_power", "target": "led", "value": 15}
+{"text": "hmm move servo to 112 degrees", "action": "set_degree", "target": "servo", "value": 112}
+{"text": "rotate servo 73 degrees thanks", "action": "set_degree", "target": "servo", "value": 73}
+{"text": "hey increase the led brightness to 5", "action": "set_power", "target": "led", "value": 5}
+{"text": "the light off", "action": "off", "target": "led", "value": null}
+{"text": "set the servo motor to 92 degree", "action": "set_degree", "target": "servo", "value": 92}
+{"text": "hmm shut down the motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "led brightness 72 please", "action": "set_power", "target": "led", "value": 72}
+{"text": "power up servo thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hmm servo to 26 please", "action": "set_degree", "target": "servo", "value": 26}
+{"text": "get the lamp off", "action": "off", "target": "led", "value": null}
+{"text": "hmm trun off led", "action": "off", "target": "led", "value": null}
+{"text": "ok set servo angle to 124", "action": "set_degree", "target": "servo", "value": 124}
+{"text": "please cut off 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo put light at 83 percent", "action": "set_power", "target": "led", "value": 83}
+{"text": "dim led to 40 percent please", "action": "set_power", "target": "led", "value": 40}
+{"text": "enable servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "hmm disengage motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "run the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm disable the light asap", "action": "off", "target": "led", "value": null}
+{"text": "power down the servo asap", "action": "off", "target": "servo", "value": null}
+{"text": "please put lamp at 93 percent now", "action": "set_power", "target": "led", "value": 93}
+{"text": "set lamp to 73% asap", "action": "set_power", "target": "led", "value": 73}
+{"text": "hmm pls stop the 28byj48 motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm trun on the light", "action": "on", "target": "led", "value": null}
+{"text": "hmm spin up the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey set light level to 75 asap", "action": "set_power", "target": "led", "value": 75}
+{"text": "enable lamp", "action": "on", "target": "led", "value": null}
+{"text": "please run stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey deactivate the lamp now", "action": "off", "target": "led", "value": null}
+{"text": "get light on thanks", "action": "on", "target": "led", "value": null}
+{"text": "shut down the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "make the led 71 percent thanks", "action": "set_power", "target": "led", "value": 71}
+{"text": "brightness 87 asap", "action": "set_power", "target": "led", "value": 87}
+{"text": "hmm move servo motor to 62 please", "action": "set_degree", "target": "servo", "value": 62}
+{"text": "set led power to 90", "action": "set_power", "target": "led", "value": 90}
+{"text": "yo turn off servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "set servo angle to 100", "action": "set_degree", "target": "servo", "value": 100}
+{"text": "led at 52% asap", "action": "set_power", "target": "led", "value": 52}
+{"text": "hmm activate the led", "action": "on", "target": "led", "value": null}
+{"text": "can you start the 28byj48 motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm dim led to 88 percent now", "action": "set_power", "target": "led", "value": 88}
+{"text": "yo set light level to 91", "action": "set_power", "target": "led", "value": 91}
+{"text": "yo light up lamp", "action": "on", "target": "led", "value": null}
+{"text": "get the motor running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm start the servo motor please", "action": "on", "target": "servo", "value": null}
+{"text": "disable the servo now", "action": "off", "target": "servo", "value": null}
+{"text": "point the servo motor to 58 degrees", "action": "set_degree", "target": "servo", "value": 58}
+{"text": "yo set light to 100 percent thanks", "action": "set_power", "target": "led", "value": 100}
+{"text": "turn on servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "switch off lamp thanks", "action": "off", "target": "led", "value": null}
+{"text": "enable the servo", "action": "on", "target": "servo", "value": null}
+{"text": "hmm set led to 69%", "action": "set_power", "target": "led", "value": 69}
+{"text": "hmm trun off the light now", "action": "off", "target": "led", "value": null}
+{"text": "hmm brightness 84", "action": "set_power", "target": "led", "value": 84}
+{"text": "28byj48 off please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "dim led to 69 percent", "action": "set_power", "target": "led", "value": 69}
+{"text": "start the led thanks", "action": "on", "target": "led", "value": null}
+{"text": "hey brightness 44", "action": "set_power", "target": "led", "value": 44}
+{"text": "yo lamp on", "action": "on", "target": "led", "value": null}
+{"text": "point the servo motor to 163 degrees please", "action": "set_degree", "target": "servo", "value": 163}
+{"text": "get the lamp on", "action": "on", "target": "led", "value": null}
+{"text": "please start 28byj48 thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please get lamp on now", "action": "on", "target": "led", "value": null}
+{"text": "ok set led power to 34", "action": "set_power", "target": "led", "value": 34}
+{"text": "please set led power to 45 thanks", "action": "set_power", "target": "led", "value": 45}
+{"text": "the 28byj48 motor off thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please turn the servo to 3 degrees now", "action": "set_degree", "target": "servo", "value": 3}
+{"text": "yo turn the light on", "action": "on", "target": "led", "value": null}
+{"text": "please stop 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok turn off stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo deactivate light thanks", "action": "off", "target": "led", "value": null}
+{"text": "i want led on thanks", "action": "on", "target": "led", "value": null}
+{"text": "increase the lamp brightness to 46 now", "action": "set_power", "target": "led", "value": 46}
+{"text": "put the lamp at 6 percent now", "action": "set_power", "target": "led", "value": 6}
+{"text": "yo deactivate the light asap", "action": "off", "target": "led", "value": null}
+{"text": "please switch off led", "action": "off", "target": "led", "value": null}
+{"text": "hmm shut down the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "make the led 95 percent", "action": "set_power", "target": "led", "value": 95}
+{"text": "rotate servo 176 degrees", "action": "set_degree", "target": "servo", "value": 176}
+{"text": "hey enable the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "please light up light", "action": "on", "target": "led", "value": null}
+{"text": "hmm the servo motor on", "action": "on", "target": "servo", "value": null}
+{"text": "ok rotate servo to 2 deg", "action": "set_degree", "target": "servo", "value": 2}
+{"text": "please kill the light asap", "action": "off", "target": "led", "value": null}
+{"text": "yo start servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "i want lamp on thanks", "action": "on", "target": "led", "value": null}
+{"text": "hey rotate servo motor to 31 deg please", "action": "set_degree", "target": "servo", "value": 31}
+{"text": "kill the led thanks", "action": "off", "target": "led", "value": null}
+{"text": "make the led 38 percent", "action": "set_power", "target": "led", "value": 38}
+{"text": "yo please stop the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok fire up light", "action": "on", "target": "led", "value": null}
+{"text": "rotate servo 38 degrees", "action": "set_degree", "target": "servo", "value": 38}
+{"text": "ok put lamp at 49 percent", "action": "set_power", "target": "led", "value": 49}
+{"text": "please can you start 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please rotate servo 138 degrees now", "action": "set_degree", "target": "servo", "value": 138}
+{"text": "hmm light up the light asap", "action": "on", "target": "led", "value": null}
+{"text": "hmm move servo to 63 degrees now", "action": "set_degree", "target": "servo", "value": 63}
+{"text": "hmm turn on the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please turn on the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set light level to 0 asap", "action": "set_power", "target": "led", "value": 0}
+{"text": "enable servo motor please", "action": "on", "target": "servo", "value": null}
+{"text": "please led at 13% please", "action": "set_power", "target": "led", "value": 13}
+{"text": "ok dim led to 17 percent asap", "action": "set_power", "target": "led", "value": 17}
+{"text": "brightness 12", "action": "set_power", "target": "led", "value": 12}
+{"text": "ok set light to 84 percent", "action": "set_power", "target": "led", "value": 84}
+{"text": "hmm put lamp at 71 percent thanks", "action": "set_power", "target": "led", "value": 71}
+{"text": "yo enable servo now", "action": "on", "target": "servo", "value": null}
+{"text": "hmm turn off servo", "action": "off", "target": "servo", "value": null}
+{"text": "hey rotate the servo motor to 1 deg thanks", "action": "set_degree", "target": "servo", "value": 1}
+{"text": "hmm turn off motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey stepper motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "can you stop the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm enable servo", "action": "on", "target": "servo", "value": null}
+{"text": "activate the led thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok servo motor off thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please can you start the stepper motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "please can you start the motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok set servo angle to 141", "action": "set_degree", "target": "servo", "value": 141}
+{"text": "set the lamp to 33% thanks", "action": "set_power", "target": "led", "value": 33}
+{"text": "led brightness 84 please", "action": "set_power", "target": "led", "value": 84}
+{"text": "ok point servo to 138 degrees thanks", "action": "set_degree", "target": "servo", "value": 138}
+{"text": "ok cut off the 28byj48 motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey switch the lamp on thanks", "action": "on", "target": "led", "value": null}
+{"text": "yo servo to 119 thanks", "action": "set_degree", "target": "servo", "value": 119}
+{"text": "hmm trun off light thanks", "action": "off", "target": "led", "value": null}
+{"text": "start the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "i want lamp on", "action": "on", "target": "led", "value": null}
+{"text": "hey point servo to 121 degrees", "action": "set_degree", "target": "servo", "value": 121}
+{"text": "hey enable the lamp", "action": "on", "target": "led", "value": null}
+{"text": "hey activate the light", "action": "on", "target": "led", "value": null}
+{"text": "stop lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "cut off the stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "turn light on thanks", "action": "on", "target": "led", "value": null}
+{"text": "hmm i want lamp off now", "action": "off", "target": "led", "value": null}
+{"text": "hey rotate the servo motor to 20 deg please", "action": "set_degree", "target": "servo", "value": 20}
+{"text": "yo the servo on", "action": "on", "target": "servo", "value": null}
+{"text": "increase led brightness to 18", "action": "set_power", "target": "led", "value": 18}
+{"text": "please rotate servo to 127 deg asap", "action": "set_degree", "target": "servo", "value": 127}
+{"text": "turn on the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "ok servo to 175 asap", "action": "set_degree", "target": "servo", "value": 175}
+{"text": "please cut off the stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please stop the lamp", "action": "off", "target": "led", "value": null}
+{"text": "ok cut off 28byj48 please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey adjust servo to 25 degrees asap", "action": "set_degree", "target": "servo", "value": 25}
+{"text": "please can you stop motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "power down lamp", "action": "off", "target": "led", "value": null}
+{"text": "turn the servo to 56 degrees", "action": "set_degree", "target": "servo", "value": 56}
+{"text": "yo lamp off", "action": "off", "target": "led", "value": null}
+{"text": "set servo angle to 119", "action": "set_degree", "target": "servo", "value": 119}
+{"text": "yo get the 28byj48 motor running asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please pls stop 28byj48 please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "disable servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "servo to 147 asap", "action": "set_degree", "target": "servo", "value": 147}
+{"text": "hey led at 25%", "action": "set_power", "target": "led", "value": 25}
+{"text": "get lamp on now", "action": "on", "target": "led", "value": null}
+{"text": "i want the lamp off asap", "action": "off", "target": "led", "value": null}
+{"text": "hey move the servo motor to 63 thanks", "action": "set_degree", "target": "servo", "value": 63}
+{"text": "turn on the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm turn off the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo can you start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey set led to 47%", "action": "set_power", "target": "led", "value": 47}
+{"text": "please start light", "action": "on", "target": "led", "value": null}
+{"text": "hmm can you stop the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm dim led to 25 percent", "action": "set_power", "target": "led", "value": 25}
+{"text": "hey shut down the light asap", "action": "off", "target": "led", "value": null}
+{"text": "ok disable lamp please", "action": "off", "target": "led", "value": null}
+{"text": "ok trun on the led", "action": "on", "target": "led", "value": null}
+{"text": "hmm power down lamp now", "action": "off", "target": "led", "value": null}
+{"text": "turn on the servo", "action": "on", "target": "servo", "value": null}
+{"text": "ok start the motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please rotate servo 145 degrees", "action": "set_degree", "target": "servo", "value": 145}
+{"text": "set servo motor to 49 degree", "action": "set_degree", "target": "servo", "value": 49}
+{"text": "i want the led on thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok fire up the led thanks", "action": "on", "target": "led", "value": null}
+{"text": "fire up the led", "action": "on", "target": "led", "value": null}
+{"text": "turn on the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "yo adjust servo to 147 degrees now", "action": "set_degree", "target": "servo", "value": 147}
+{"text": "ok servo motor on", "action": "on", "target": "servo", "value": null}
+{"text": "please turn on the light asap", "action": "on", "target": "led", "value": null}
+{"text": "turn the servo to 138 degrees please", "action": "set_degree", "target": "servo", "value": 138}
+{"text": "hmm disable servo", "action": "off", "target": "servo", "value": null}
+{"text": "hmm trun on light", "action": "on", "target": "led", "value": null}
+{"text": "please move servo to 124 degrees asap", "action": "set_degree", "target": "servo", "value": 124}
+{"text": "trun off the lamp please", "action": "off", "target": "led", "value": null}
+{"text": "shut down the light thanks", "action": "off", "target": "led", "value": null}
+{"text": "hey engage 28byj48 asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo deactivate the led", "action": "off", "target": "led", "value": null}
+{"text": "please engage 28byj48 please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "disengage stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey pls turn on led", "action": "on", "target": "led", "value": null}
+{"text": "ok start servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "power down servo", "action": "off", "target": "servo", "value": null}
+{"text": "please shut down 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "point servo to 128 degrees thanks", "action": "set_degree", "target": "servo", "value": 128}
+{"text": "turn on lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "yo rotate servo motor to 93 deg asap", "action": "set_degree", "target": "servo", "value": 93}
+{"text": "please start the light", "action": "on", "target": "led", "value": null}
+{"text": "move servo to 73 degrees", "action": "set_degree", "target": "servo", "value": 73}
+{"text": "hey start the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm brighten lamp to 86 percent now", "action": "set_power", "target": "led", "value": 86}
+{"text": "ok can you start 28byj48 please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo enable servo thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hey servo to 18 please", "action": "set_degree", "target": "servo", "value": 18}
+{"text": "ok turn on servo", "action": "on", "target": "servo", "value": null}
+{"text": "please led off now", "action": "off", "target": "led", "value": null}
+{"text": "yo cut off the stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please the motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "power up servo", "action": "on", "target": "servo", "value": null}
+{"text": "move the servo motor to 27", "action": "set_degree", "target": "servo", "value": 27}
+{"text": "ok switch off light please", "action": "off", "target": "led", "value": null}
+{"text": "hey switch led on thanks", "action": "on", "target": "led", "value": null}
+{"text": "can you start motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "get stepper motor running asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please pls start the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo get the stepper motor running thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm servo go to 140 thanks", "action": "set_degree", "target": "servo", "value": 140}
+{"text": "ok disable the servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please move the servo to 138 please", "action": "set_degree", "target": "servo", "value": 138}
+{"text": "yo turn on the stepper motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo brightness 85 asap", "action": "set_power", "target": "led", "value": 85}
+{"text": "hmm set servo angle to 113 asap", "action": "set_degree", "target": "servo", "value": 113}
+{"text": "move servo motor to 157 asap", "action": "set_degree", "target": "servo", "value": 157}
+{"text": "pls turn on the lamp", "action": "on", "target": "led", "value": null}
+{"text": "turn on servo thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hey spin up motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "dim led to 87 percent now", "action": "set_power", "target": "led", "value": 87}
+{"text": "pls stop stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok set light level to 6", "action": "set_power", "target": "led", "value": 6}
+{"text": "turn on the led please", "action": "on", "target": "led", "value": null}
+{"text": "turn the servo to 9 degrees", "action": "set_degree", "target": "servo", "value": 9}
+{"text": "please power up the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "ok set light level to 32", "action": "set_power", "target": "led", "value": 32}
+{"text": "hmm trun off the lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "please disengage the 28byj48 motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok rotate servo 27 degrees", "action": "set_degree", "target": "servo", "value": 27}
+{"text": "yo power down servo please", "action": "off", "target": "servo", "value": null}
+{"text": "hey set the servo motor to 47 degree now", "action": "set_degree", "target": "servo", "value": 47}
+{"text": "deactivate led now", "action": "off", "target": "led", "value": null}
+{"text": "power up servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "ok led at 52% thanks", "action": "set_power", "target": "led", "value": 52}
+{"text": "hey spin up motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok shut down motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey turn off the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey shut down motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "increase the lamp brightness to 96", "action": "set_power", "target": "led", "value": 96}
+{"text": "hmm trun on lamp", "action": "on", "target": "led", "value": null}
+{"text": "light up the lamp please", "action": "on", "target": "led", "value": null}
+{"text": "hey kill the led please", "action": "off", "target": "led", "value": null}
+{"text": "move servo motor to 67 asap", "action": "set_degree", "target": "servo", "value": 67}
+{"text": "yo i want led on", "action": "on", "target": "led", "value": null}
+{"text": "hmm run 28byj48 please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "make the led 95 percent now", "action": "set_power", "target": "led", "value": 95}
+{"text": "hmm disable light", "action": "off", "target": "led", "value": null}
+{"text": "yo brighten lamp to 24 percent please", "action": "set_power", "target": "led", "value": 24}
+{"text": "rotate servo motor to 110 deg", "action": "set_degree", "target": "servo", "value": 110}
+{"text": "stop stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey rotate servo to 97 deg asap", "action": "set_degree", "target": "servo", "value": 97}
+{"text": "hmm switch off light", "action": "off", "target": "led", "value": null}
+{"text": "hmm spin up the 28byj48 motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please stop stepper motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "the 28byj48 motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please brightness 79 asap", "action": "set_power", "target": "led", "value": 79}
+{"text": "hmm enable the servo motor please", "action": "on", "target": "servo", "value": null}
+{"text": "ok shut down the light", "action": "off", "target": "led", "value": null}
+{"text": "set light to 44 percent please", "action": "set_power", "target": "led", "value": 44}
+{"text": "ok set led power to 8 now", "action": "set_power", "target": "led", "value": 8}
+{"text": "ok turn on the lamp please", "action": "on", "target": "led", "value": null}
+{"text": "ok start the servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "switch off the light now", "action": "off", "target": "led", "value": null}
+{"text": "servo go to 125 asap", "action": "set_degree", "target": "servo", "value": 125}
+{"text": "hmm servo to 123", "action": "set_degree", "target": "servo", "value": 123}
+{"text": "please set the servo motor to 171 degree", "action": "set_degree", "target": "servo", "value": 171}
+{"text": "trun off lamp", "action": "off", "target": "led", "value": null}
+{"text": "hey disable the lamp", "action": "off", "target": "led", "value": null}
+{"text": "yo rotate the servo to 33 deg please", "action": "set_degree", "target": "servo", "value": 33}
+{"text": "ok move servo to 143 degrees", "action": "set_degree", "target": "servo", "value": 143}
+{"text": "hmm deactivate servo motor asap", "action": "off", "target": "servo", "value": null}
+{"text": "yo kill led now", "action": "off", "target": "led", "value": null}
+{"text": "ok servo go to 156 now", "action": "set_degree", "target": "servo", "value": 156}
+{"text": "move servo to 144 degrees please", "action": "set_degree", "target": "servo", "value": 144}
+{"text": "led brightness 55 thanks", "action": "set_power", "target": "led", "value": 55}
+{"text": "yo led on", "action": "on", "target": "led", "value": null}
+{"text": "ok light up the light thanks", "action": "on", "target": "led", "value": null}
+{"text": "hey switch off the light now", "action": "off", "target": "led", "value": null}
+{"text": "please spin up 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "get 28byj48 running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo point servo motor to 1 degrees please", "action": "set_degree", "target": "servo", "value": 1}
+{"text": "servo go to 26 thanks", "action": "set_degree", "target": "servo", "value": 26}
+{"text": "hey power down lamp thanks", "action": "off", "target": "led", "value": null}
+{"text": "start 28byj48 please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "light up the led thanks", "action": "on", "target": "led", "value": null}
+{"text": "hmm shut down 28byj48 asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey pls turn on the light please", "action": "on", "target": "led", "value": null}
+{"text": "hmm trun on the led asap", "action": "on", "target": "led", "value": null}
+{"text": "please stop the stepper motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo angle to 80 please", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "yo light up led please", "action": "on", "target": "led", "value": null}
+{"text": "hey set servo angle to 82 now", "action": "set_degree", "target": "servo", "value": 82}
+{"text": "hey brightness 73 thanks", "action": "set_power", "target": "led", "value": 73}
+{"text": "hmm servo go to 58 thanks", "action": "set_degree", "target": "servo", "value": 58}
+{"text": "please deactivate the servo asap", "action": "off", "target": "servo", "value": null}
+{"text": "hmm enable light", "action": "on", "target": "led", "value": null}
+{"text": "move servo motor to 25", "action": "set_degree", "target": "servo", "value": 25}
+{"text": "get light off", "action": "off", "target": "led", "value": null}
+{"text": "enable the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "ok please stop the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "disable servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "move servo to 175 thanks", "action": "set_degree", "target": "servo", "value": 175}
+{"text": "rotate servo to 30 deg thanks", "action": "set_degree", "target": "servo", "value": 30}
+{"text": "please turn on servo now", "action": "on", "target": "servo", "value": null}
+{"text": "servo to 104 please", "action": "set_degree", "target": "servo", "value": 104}
+{"text": "servo to 99 now", "action": "set_degree", "target": "servo", "value": 99}
+{"text": "brightness 19 asap", "action": "set_power", "target": "led", "value": 19}
+{"text": "ok the servo on asap", "action": "on", "target": "servo", "value": null}
+{"text": "brightness 12 thanks", "action": "set_power", "target": "led", "value": 12}
+{"text": "activate the led please", "action": "on", "target": "led", "value": null}
+{"text": "disable light asap", "action": "off", "target": "led", "value": null}
+{"text": "pls start the motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "move servo to 123 degrees now", "action": "set_degree", "target": "servo", "value": 123}
+{"text": "yo pls start stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey can you stop stepper motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please pls start stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "led brightness 62 asap", "action": "set_power", "target": "led", "value": 62}
+{"text": "set the servo to 13 degree", "action": "set_degree", "target": "servo", "value": 13}
+{"text": "hey increase led brightness to 86", "action": "set_power", "target": "led", "value": 86}
+{"text": "hmm pls stop stepper motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm shut down stepper motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey can you stop the 28byj48 motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey set light level to 78 thanks", "action": "set_power", "target": "led", "value": 78}
+{"text": "start the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "please start the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo set light level to 28 asap", "action": "set_power", "target": "led", "value": 28}
+{"text": "hmm deactivate the servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "get stepper motor running now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please power up servo", "action": "on", "target": "servo", "value": null}
+{"text": "hmm power up servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "servo motor off now", "action": "off", "target": "servo", "value": null}
+{"text": "ok power down the servo asap", "action": "off", "target": "servo", "value": null}
+{"text": "hmm move servo to 8 degrees now", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "ok turn off servo motor thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please turn off the servo", "action": "off", "target": "servo", "value": null}
+{"text": "ok set led power to 32 now", "action": "set_power", "target": "led", "value": 32}
+{"text": "please deactivate the servo", "action": "off", "target": "servo", "value": null}
+{"text": "yo shut down the motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo power down led asap", "action": "off", "target": "led", "value": null}
+{"text": "please point the servo to 136 degrees asap", "action": "set_degree", "target": "servo", "value": 136}
+{"text": "hmm disable the servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "hey turn on the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "hmm get led on please", "action": "on", "target": "led", "value": null}
+{"text": "please the servo on", "action": "on", "target": "servo", "value": null}
+{"text": "yo turn off the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please get the motor running asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm set light to 87%", "action": "set_power", "target": "led", "value": 87}
+{"text": "please increase the light brightness to 76 thanks", "action": "set_power", "target": "led", "value": 76}
+{"text": "turn on the servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hmm put the light at 58 percent", "action": "set_power", "target": "led", "value": 58}
+{"text": "brightness 25 now", "action": "set_power", "target": "led", "value": 25}
+{"text": "point servo motor to 79 degrees thanks", "action": "set_degree", "target": "servo", "value": 79}
+{"text": "i want lamp on please", "action": "on", "target": "led", "value": null}
+{"text": "brightness 36", "action": "set_power", "target": "led", "value": 36}
+{"text": "hmm turn off 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo angle to 20 asap", "action": "set_degree", "target": "servo", "value": 20}
+{"text": "please activate the lamp now", "action": "on", "target": "led", "value": null}
+{"text": "please start the motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm dim led to 49 percent please", "action": "set_power", "target": "led", "value": 49}
+{"text": "please can you stop motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok power up servo", "action": "on", "target": "servo", "value": null}
+{"text": "please i want led on asap", "action": "on", "target": "led", "value": null}
+{"text": "fire up light asap", "action": "on", "target": "led", "value": null}
+{"text": "hmm turn the servo to 137 degrees asap", "action": "set_degree", "target": "servo", "value": 137}
+{"text": "yo turn on servo now", "action": "on", "target": "servo", "value": null}
+{"text": "please turn on servo motor now", "action": "on", "target": "servo", "value": null}
+{"text": "ok adjust servo to 8 degrees now", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "ok please start stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok shut down the stepper motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "led brightness 35 asap", "action": "set_power", "target": "led", "value": 35}
+{"text": "trun off the lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "hey set light level to 6", "action": "set_power", "target": "led", "value": 6}
+{"text": "ok stop 28byj48 thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo move servo to 155 please", "action": "set_degree", "target": "servo", "value": 155}
+{"text": "turn on light", "action": "on", "target": "led", "value": null}
+{"text": "turn off servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "hey brightness 32", "action": "set_power", "target": "led", "value": 32}
+{"text": "hey set servo to 173 degree please", "action": "set_degree", "target": "servo", "value": 173}
+{"text": "hmm adjust servo to 34 degrees thanks", "action": "set_degree", "target": "servo", "value": 34}
+{"text": "yo run the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set led power to 35", "action": "set_power", "target": "led", "value": 35}
+{"text": "please please stop the motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo move servo to 179 degrees", "action": "set_degree", "target": "servo", "value": 179}
+{"text": "hey enable the servo please", "action": "on", "target": "servo", "value": null}
+{"text": "hey turn off the 28byj48 motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey stop the motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm can you stop stepper motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please disable lamp", "action": "off", "target": "led", "value": null}
+{"text": "yo deactivate servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "ok pls stop 28byj48 now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo move servo to 170 thanks", "action": "set_degree", "target": "servo", "value": 170}
+{"text": "led brightness 37", "action": "set_power", "target": "led", "value": 37}
+{"text": "ok brighten the lamp to 53 percent please", "action": "set_power", "target": "led", "value": 53}
+{"text": "please cut off the motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please the 28byj48 motor off please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo led brightness 49 thanks", "action": "set_power", "target": "led", "value": 49}
+{"text": "please move servo to 40 degrees", "action": "set_degree", "target": "servo", "value": 40}
+{"text": "kill lamp now", "action": "off", "target": "led", "value": null}
+{"text": "fire up the lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "hmm power down light", "action": "off", "target": "led", "value": null}
+{"text": "turn off the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm disable the servo please", "action": "off", "target": "servo", "value": null}
+{"text": "ok move servo to 135 asap", "action": "set_degree", "target": "servo", "value": 135}
+{"text": "ok set led power to 43 asap", "action": "set_power", "target": "led", "value": 43}
+{"text": "hey switch off lamp", "action": "off", "target": "led", "value": null}
+{"text": "activate the led", "action": "on", "target": "led", "value": null}
+{"text": "power down the servo please", "action": "off", "target": "servo", "value": null}
+{"text": "hey i want lamp on now", "action": "on", "target": "led", "value": null}
+{"text": "hey switch the led on thanks", "action": "on", "target": "led", "value": null}
+{"text": "trun on light asap", "action": "on", "target": "led", "value": null}
+{"text": "please light up light now", "action": "on", "target": "led", "value": null}
+{"text": "hey the servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "please spin up the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo trun off the led asap", "action": "off", "target": "led", "value": null}
+{"text": "ok shut down 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set light level to 0 please", "action": "set_power", "target": "led", "value": 0}
+{"text": "yo run the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please put the lamp at 49 percent please", "action": "set_power", "target": "led", "value": 49}
+{"text": "get 28byj48 running thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo set servo motor to 42 degree asap", "action": "set_degree", "target": "servo", "value": 42}
+{"text": "hmm power down light please", "action": "off", "target": "led", "value": null}
+{"text": "ok set servo angle to 80 now", "action": "set_degree", "target": "servo", "value": 80}
+{"text": "hmm can you stop 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok rotate servo 162 degrees", "action": "set_degree", "target": "servo", "value": 162}
+{"text": "hmm set servo angle to 178 thanks", "action": "set_degree", "target": "servo", "value": 178}
+{"text": "hmm move servo to 55 degrees", "action": "set_degree", "target": "servo", "value": 55}
+{"text": "rotate servo to 123 deg now", "action": "set_degree", "target": "servo", "value": 123}
+{"text": "move servo to 130 degrees", "action": "set_degree", "target": "servo", "value": 130}
+{"text": "ok please start motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "rotate the servo motor to 65 deg now", "action": "set_degree", "target": "servo", "value": 65}
+{"text": "please can you start the motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo to 67", "action": "set_degree", "target": "servo", "value": 67}
+{"text": "hmm move servo to 79 degrees thanks", "action": "set_degree", "target": "servo", "value": 79}
+{"text": "deactivate the servo", "action": "off", "target": "servo", "value": null}
+{"text": "please please stop the motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "power up the servo now", "action": "on", "target": "servo", "value": null}
+{"text": "yo adjust servo to 112 degrees", "action": "set_degree", "target": "servo", "value": 112}
+{"text": "the stepper motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "servo go to 149", "action": "set_degree", "target": "servo", "value": 149}
+{"text": "point servo motor to 175 degrees", "action": "set_degree", "target": "servo", "value": 175}
+{"text": "hmm set led power to 92", "action": "set_power", "target": "led", "value": 92}
+{"text": "please spin up stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set led power to 100 now", "action": "set_power", "target": "led", "value": 100}
+{"text": "switch lamp on", "action": "on", "target": "led", "value": null}
+{"text": "ok run the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey make the led 42 percent please", "action": "set_power", "target": "led", "value": 42}
+{"text": "enable servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "led at 75% asap", "action": "set_power", "target": "led", "value": 75}
+{"text": "servo to 172 now", "action": "set_degree", "target": "servo", "value": 172}
+{"text": "yo activate the light", "action": "on", "target": "led", "value": null}
+{"text": "ok power up the servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hmm servo to 136 thanks", "action": "set_degree", "target": "servo", "value": 136}
+{"text": "hmm pls start 28byj48 thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo trun on light now", "action": "on", "target": "led", "value": null}
+{"text": "pls start motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo set light level to 73 thanks", "action": "set_power", "target": "led", "value": 73}
+{"text": "activate the light thanks", "action": "on", "target": "led", "value": null}
+{"text": "hey set lamp to 89%", "action": "set_power", "target": "led", "value": 89}
+{"text": "please please stop motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm disable servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "ok rotate the servo motor to 77 deg", "action": "set_degree", "target": "servo", "value": 77}
+{"text": "please power up the servo asap", "action": "on", "target": "servo", "value": null}
+{"text": "ok start the lamp please", "action": "on", "target": "led", "value": null}
+{"text": "yo pls start the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo put light at 51 percent", "action": "set_power", "target": "led", "value": 51}
+{"text": "yo turn the servo to 1 degrees please", "action": "set_degree", "target": "servo", "value": 1}
+{"text": "pls start the stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey power down the servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "point the servo motor to 88 degrees thanks", "action": "set_degree", "target": "servo", "value": 88}
+{"text": "hmm brightness 70", "action": "set_power", "target": "led", "value": 70}
+{"text": "hmm start the servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "ok engage 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "pls start stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm brightness 46 please", "action": "set_power", "target": "led", "value": 46}
+{"text": "hmm servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "adjust servo to 111 degrees asap", "action": "set_degree", "target": "servo", "value": 111}
+{"text": "hmm disable the light now", "action": "off", "target": "led", "value": null}
+{"text": "please cut off the stepper motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey the servo on", "action": "on", "target": "servo", "value": null}
+{"text": "please power down servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "turn off stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo run stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok start the servo now", "action": "on", "target": "servo", "value": null}
+{"text": "please can you stop stepper motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo shut down light now", "action": "off", "target": "led", "value": null}
+{"text": "move servo to 132 degrees", "action": "set_degree", "target": "servo", "value": 132}
+{"text": "led off", "action": "off", "target": "led", "value": null}
+{"text": "ok set light level to 60 thanks", "action": "set_power", "target": "led", "value": 60}
+{"text": "enable the led", "action": "on", "target": "led", "value": null}
+{"text": "put the led at 48 percent asap", "action": "set_power", "target": "led", "value": 48}
+{"text": "power down the servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "set led power to 45 asap", "action": "set_power", "target": "led", "value": 45}
+{"text": "yo adjust servo to 107 degrees", "action": "set_degree", "target": "servo", "value": 107}
+{"text": "ok start the servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "rotate servo 10 degrees", "action": "set_degree", "target": "servo", "value": 10}
+{"text": "please stop lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "yo increase the lamp brightness to 84", "action": "set_power", "target": "led", "value": 84}
+{"text": "hey power down lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "enable the light", "action": "on", "target": "led", "value": null}
+{"text": "fire up the lamp", "action": "on", "target": "led", "value": null}
+{"text": "hey adjust servo to 37 degrees", "action": "set_degree", "target": "servo", "value": 37}
+{"text": "yo deactivate the servo please", "action": "off", "target": "servo", "value": null}
+{"text": "please stop the motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "please run stepper motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "spin up stepper motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please led brightness 21", "action": "set_power", "target": "led", "value": 21}
+{"text": "hmm dim led to 54 percent now", "action": "set_power", "target": "led", "value": 54}
+{"text": "hmm servo go to 68 asap", "action": "set_degree", "target": "servo", "value": 68}
+{"text": "hmm set servo angle to 28", "action": "set_degree", "target": "servo", "value": 28}
+{"text": "set led to 13% now", "action": "set_power", "target": "led", "value": 13}
+{"text": "yo fire up the lamp thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok turn on the servo", "action": "on", "target": "servo", "value": null}
+{"text": "fire up the light", "action": "on", "target": "led", "value": null}
+{"text": "hmm motor off", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo angle to 115 please", "action": "set_degree", "target": "servo", "value": 115}
+{"text": "yo get the stepper motor running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok power down the lamp asap", "action": "off", "target": "led", "value": null}
+{"text": "ok turn off stepper motor asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey dim led to 82 percent", "action": "set_power", "target": "led", "value": 82}
+{"text": "ok get light on", "action": "on", "target": "led", "value": null}
+{"text": "ok the servo motor on", "action": "on", "target": "servo", "value": null}
+{"text": "yo please start stepper motor now", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please adjust servo to 125 degrees", "action": "set_degree", "target": "servo", "value": 125}
+{"text": "enable servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "hmm turn on the servo motor now", "action": "on", "target": "servo", "value": null}
+{"text": "ok turn lamp on", "action": "on", "target": "led", "value": null}
+{"text": "stop the 28byj48 motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey led brightness 50 thanks", "action": "set_power", "target": "led", "value": 50}
+{"text": "enable servo please", "action": "on", "target": "servo", "value": null}
+{"text": "hmm move servo to 140 degrees now", "action": "set_degree", "target": "servo", "value": 140}
+{"text": "move the servo to 125", "action": "set_degree", "target": "servo", "value": 125}
+{"text": "hmm make the led 2 percent", "action": "set_power", "target": "led", "value": 2}
+{"text": "hmm enable the lamp", "action": "on", "target": "led", "value": null}
+{"text": "please disable servo please", "action": "off", "target": "servo", "value": null}
+{"text": "ok power down the servo motor asap", "action": "off", "target": "servo", "value": null}
+{"text": "yo trun off led now", "action": "off", "target": "led", "value": null}
+{"text": "kill led asap", "action": "off", "target": "led", "value": null}
+{"text": "point the servo to 48 degrees", "action": "set_degree", "target": "servo", "value": 48}
+{"text": "ok the servo on", "action": "on", "target": "servo", "value": null}
+{"text": "move the servo to 86 please", "action": "set_degree", "target": "servo", "value": 86}
+{"text": "set light level to 19", "action": "set_power", "target": "led", "value": 19}
+{"text": "hmm point servo to 111 degrees please", "action": "set_degree", "target": "servo", "value": 111}
+{"text": "please cut off motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "rotate servo 32 degrees", "action": "set_degree", "target": "servo", "value": 32}
+{"text": "brighten the lamp to 6 percent", "action": "set_power", "target": "led", "value": 6}
+{"text": "turn off motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo on please", "action": "on", "target": "servo", "value": null}
+{"text": "hmm increase the lamp brightness to 37", "action": "set_power", "target": "led", "value": 37}
+{"text": "hey set light level to 86 thanks", "action": "set_power", "target": "led", "value": 86}
+{"text": "ok lamp off", "action": "off", "target": "led", "value": null}
+{"text": "please get 28byj48 running", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey start the light thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok led brightness 7", "action": "set_power", "target": "led", "value": 7}
+{"text": "move servo to 142 degrees now", "action": "set_degree", "target": "servo", "value": 142}
+{"text": "hmm engage 28byj48 asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "please disengage stepper motor", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "can you stop 28byj48", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "ok put lamp at 11 percent please", "action": "set_power", "target": "led", "value": 11}
+{"text": "brighten led to 94 percent", "action": "set_power", "target": "led", "value": 94}
+{"text": "rotate servo 91 degrees", "action": "set_degree", "target": "servo", "value": 91}
+{"text": "ok power down servo", "action": "off", "target": "servo", "value": null}
+{"text": "servo to 69", "action": "set_degree", "target": "servo", "value": 69}
+{"text": "hmm deactivate the servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "hmm i want led off", "action": "off", "target": "led", "value": null}
+{"text": "hmm set light to 87 percent now", "action": "set_power", "target": "led", "value": 87}
+{"text": "ok deactivate the lamp", "action": "off", "target": "led", "value": null}
+{"text": "switch off led thanks", "action": "off", "target": "led", "value": null}
+{"text": "hmm led brightness 100 thanks", "action": "set_power", "target": "led", "value": 100}
+{"text": "enable the servo motor", "action": "on", "target": "servo", "value": null}
+{"text": "hey engage the 28byj48 motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "set servo angle to 8 thanks", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "hey set the servo motor to 60 degree", "action": "set_degree", "target": "servo", "value": 60}
+{"text": "yo led at 85% asap", "action": "set_power", "target": "led", "value": 85}
+{"text": "ok trun off light thanks", "action": "off", "target": "led", "value": null}
+{"text": "set servo to 172 degree", "action": "set_degree", "target": "servo", "value": 172}
+{"text": "trun on light", "action": "on", "target": "led", "value": null}
+{"text": "pls turn on led", "action": "on", "target": "led", "value": null}
+{"text": "turn the servo to 179 degrees now", "action": "set_degree", "target": "servo", "value": 179}
+{"text": "adjust servo to 48 degrees please", "action": "set_degree", "target": "servo", "value": 48}
+{"text": "yo power down the servo thanks", "action": "off", "target": "servo", "value": null}
+{"text": "please disable the servo now", "action": "off", "target": "servo", "value": null}
+{"text": "please turn on the 28byj48 motor asap", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "move servo to 56 degrees asap", "action": "set_degree", "target": "servo", "value": 56}
+{"text": "set light to 7 percent", "action": "set_power", "target": "led", "value": 7}
+{"text": "ok start the servo please", "action": "on", "target": "servo", "value": null}
+{"text": "spin up 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "hey please stop the 28byj48 motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off stepper motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey turn the servo to 61 degrees", "action": "set_degree", "target": "servo", "value": 61}
+{"text": "servo to 117 asap", "action": "set_degree", "target": "servo", "value": 117}
+{"text": "the servo motor off thanks", "action": "off", "target": "servo", "value": null}
+{"text": "hmm rotate servo 52 degrees", "action": "set_degree", "target": "servo", "value": 52}
+{"text": "hey switch off the light thanks", "action": "off", "target": "led", "value": null}
+{"text": "servo go to 67 now", "action": "set_degree", "target": "servo", "value": 67}
+{"text": "ok turn off the light", "action": "off", "target": "led", "value": null}
+{"text": "yo stop the led now", "action": "off", "target": "led", "value": null}
+{"text": "ok rotate servo 29 degrees thanks", "action": "set_degree", "target": "servo", "value": 29}
+{"text": "please i want led off thanks", "action": "off", "target": "led", "value": null}
+{"text": "hmm please stop the motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hey the servo off asap", "action": "off", "target": "servo", "value": null}
+{"text": "set servo motor to 15 degree please", "action": "set_degree", "target": "servo", "value": 15}
+{"text": "please dim led to 49 percent asap", "action": "set_power", "target": "led", "value": 49}
+{"text": "yo increase the light brightness to 49 now", "action": "set_power", "target": "led", "value": 49}
+{"text": "yo pls start motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "led at 81% please", "action": "set_power", "target": "led", "value": 81}
+{"text": "yo set led power to 95 asap", "action": "set_power", "target": "led", "value": 95}
+{"text": "trun off light please", "action": "off", "target": "led", "value": null}
+{"text": "ok activate led", "action": "on", "target": "led", "value": null}
+{"text": "please set light to 42 percent thanks", "action": "set_power", "target": "led", "value": 42}
+{"text": "ok deactivate led now", "action": "off", "target": "led", "value": null}
+{"text": "ok adjust servo to 161 degrees please", "action": "set_degree", "target": "servo", "value": 161}
+{"text": "point servo motor to 63 degrees", "action": "set_degree", "target": "servo", "value": 63}
+{"text": "hey turn led on", "action": "on", "target": "led", "value": null}
+{"text": "yo trun off led", "action": "off", "target": "led", "value": null}
+{"text": "activate light now", "action": "on", "target": "led", "value": null}
+{"text": "yo led at 13% thanks", "action": "set_power", "target": "led", "value": 13}
+{"text": "ok servo off", "action": "off", "target": "servo", "value": null}
+{"text": "power down servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "ok switch off the light asap", "action": "off", "target": "led", "value": null}
+{"text": "pls start motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "cut off the motor thanks", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "start the servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "hey please start stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok power up the servo", "action": "on", "target": "servo", "value": null}
+{"text": "hey deactivate servo motor please", "action": "off", "target": "servo", "value": null}
+{"text": "put the led at 28 percent", "action": "set_power", "target": "led", "value": 28}
+{"text": "stop stepper motor please", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "hmm turn off light", "action": "off", "target": "led", "value": null}
+{"text": "move servo to 93 degrees thanks", "action": "set_degree", "target": "servo", "value": 93}
+{"text": "switch the lamp on", "action": "on", "target": "led", "value": null}
+{"text": "hey stop led thanks", "action": "off", "target": "led", "value": null}
+{"text": "please power up servo please", "action": "on", "target": "servo", "value": null}
+{"text": "hey pls start 28byj48", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok can you start the stepper motor thanks", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "yo power up the servo motor asap", "action": "on", "target": "servo", "value": null}
+{"text": "ok can you turn off the lamp", "action": "off", "target": "led", "value": null}
+{"text": "hmm led at 66% now", "action": "set_power", "target": "led", "value": 66}
+{"text": "ok deactivate servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "set servo motor to 110 degree", "action": "set_degree", "target": "servo", "value": 110}
+{"text": "hmm the servo motor on asap", "action": "on", "target": "servo", "value": null}
+{"text": "start servo motor thanks", "action": "on", "target": "servo", "value": null}
+{"text": "hmm start the stepper motor", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off 28byj48 asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "turn off the servo", "action": "off", "target": "servo", "value": null}
+{"text": "cut off 28byj48 asap", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo servo to 168 please", "action": "set_degree", "target": "servo", "value": 168}
+{"text": "pls turn on lamp", "action": "on", "target": "led", "value": null}
+{"text": "yo servo motor off thanks", "action": "off", "target": "servo", "value": null}
+{"text": "set servo angle to 49 please", "action": "set_degree", "target": "servo", "value": 49}
+{"text": "hey trun off light", "action": "off", "target": "led", "value": null}
+{"text": "switch led on thanks", "action": "on", "target": "led", "value": null}
+{"text": "ok servo to 7", "action": "set_degree", "target": "servo", "value": 7}
+{"text": "please power down servo motor", "action": "off", "target": "servo", "value": null}
+{"text": "kill the lamp please", "action": "off", "target": "led", "value": null}
+{"text": "please turn lamp on", "action": "on", "target": "led", "value": null}
+{"text": "ok servo motor off", "action": "off", "target": "servo", "value": null}
+{"text": "ok turn the lamp on", "action": "on", "target": "led", "value": null}
+{"text": "ok switch off led thanks", "action": "off", "target": "led", "value": null}
+{"text": "please rotate servo 46 degrees thanks", "action": "set_degree", "target": "servo", "value": 46}
+{"text": "set led power to 88", "action": "set_power", "target": "led", "value": 88}
+{"text": "servo to 56 thanks", "action": "set_degree", "target": "servo", "value": 56}
+{"text": "hey led on please", "action": "on", "target": "led", "value": null}
+{"text": "hmm disengage the 28byj48 motor now", "action": "off", "target": "motor_28BYJ48", "value": null}
+{"text": "yo kill the light", "action": "off", "target": "led", "value": null}
+{"text": "hmm servo to 8", "action": "set_degree", "target": "servo", "value": 8}
+{"text": "ok shut down led", "action": "off", "target": "led", "value": null}
+{"text": "please start stepper motor please", "action": "on", "target": "motor_28BYJ48", "value": null}
+{"text": "ok power down the servo motor", "action": "off", "target": "servo", "value": null}
