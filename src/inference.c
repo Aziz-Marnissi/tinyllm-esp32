@@ -6,13 +6,25 @@
 #include "lut_math.h"
 #define MAX_LEN 12
 
-// Static int8 embedding lookup, dequantized on the fly for the matmul inputs.
-// Weights (w_ih, w_hh) stay int8; accumulation happens in int32 for ih,
-// hidden activations stay float (weight-only quantization style).
+static void quantize_h(const float* h, int8_t* h_q, float* scale_out) {
+    float maxabs = 1e-8f;
+    for (int i = 0; i < HIDDEN; i++) {
+        float a = fabsf(h[i]);
+        if (a > maxabs) maxabs = a;
+    }
+    float scale = maxabs / 127.0f;
+    for (int i = 0; i < HIDDEN; i++) h_q[i] = (int8_t)lroundf(h[i] / scale);
+    *scale_out = scale;
+}
+
 static void gru_step(const int8_t* x_q, float* h,
                       const int8_t* w_ih, float w_ih_scale,
                       const int8_t* w_hh, float w_hh_scale,
                       const float* b_ih, const float* b_hh) {
+    int8_t h_q[HIDDEN];
+    float h_scale;
+    quantize_h(h, h_q, &h_scale);
+
     float gi[3 * HIDDEN];
     float gh[3 * HIDDEN];
     for (int g = 0; g < 3 * HIDDEN; g++) {
@@ -21,10 +33,10 @@ static void gru_step(const int8_t* x_q, float* h,
         for (int k = 0; k < EMB_DIM; k++) acc_i += (int32_t)w_row_i[k] * (int32_t)x_q[k];
         gi[g] = acc_i * (w_ih_scale * EMBED_W_SCALE) + b_ih[g];
 
-        float sum_h = b_hh[g];
+        int32_t acc_h = 0;
         const int8_t* w_row_h = &w_hh[g * HIDDEN];
-        for (int k = 0; k < HIDDEN; k++) sum_h += w_row_h[k] * w_hh_scale * h[k];
-        gh[g] = sum_h;
+        for (int k = 0; k < HIDDEN; k++) acc_h += (int32_t)w_row_h[k] * (int32_t)h_q[k];
+        gh[g] = acc_h * (w_hh_scale * h_scale) + b_hh[g];
     }
     float new_h[HIDDEN];
     for (int j = 0; j < HIDDEN; j++) {

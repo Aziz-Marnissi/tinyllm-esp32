@@ -155,11 +155,11 @@ Seed 2 was a clear, non-marginal standout (>5pp above the next best) and was loc
 
 ### 6.1 On-device benchmark (ESP32, full held-out adversarial test set, n=699)
 
-| Variant | Action Acc | Target Acc | Latency (avg) | RAM | Flash |
-|---|---|---|---|---|---|
-| INT8 | 81.5% | 100% | 69.7 ms | 21.5 KB | 357.6 KB |
-| Hybrid | 81.3% | 100% | 68.9 ms | 21.5 KB | 357.9 KB |
-| FP32 | 81.4% | 100% | 251.3 ms | 21.5 KB | 584.3 KB |
+| Variant | n | Action Acc | Target Acc | Latency (avg) | RAM | Flash |
+|---|---|---|---|---|---|---|
+| FP32 | 698 | 81.4% | 100% | 251.3 ms | 21.8 KB | 596.2 KB |
+| INT8 | 699 | 81.4% | 100% | 69.6 ms | 21.3 KB | 369.6 KB |
+| Hybrid | 698 | 81.5% | 99.9% | 69.0 ms | 21.3 KB | 369.8 KB |
 
 **Key finding:** accuracy is statistically indistinguishable across all three variants (quantization introduces no measurable degradation), while INT8/Hybrid are **~3.6× faster** and use **~39% less Flash** than FP32.
 
@@ -297,6 +297,17 @@ latency_avg_ms≈69 (INT8/Hybrid) or ≈251 (FP32)
 
 Repeat for each variant (re-flash between runs) to reproduce the full §6.1 table.
 
+### 8.7 Logit-level verification (Python vs C)
+
+Before trusting any on-device benchmark, it's worth confirming the C inference path produces the *same numbers* as the PyTorch reference model, not just the same argmax. `scripts/compare_logits.py` loads `model.pt`, parses the exact deployed vocab from `src/vocab.h` (not `data/vocab.json`, which has since drifted to a different, incompatible vocab size), and prints raw action/target logits and the value-head prediction for a fixed set of test sentences — the same sentences hardcoded in `tests/test_inference.c`.
+
+```bash
+cd scripts
+python3 compare_logits.py
+```
+
+Compare its output against `./test_inf` (built per §8.3) for each variant. Action/target logits should match to ~5-6 decimal places for FP32, and within small quantization noise for INT8/Hybrid. The value prediction should match closely on every sentence, including ones containing a number ("90 degrees", "45") — this is what originally caught the missing `num_feat`/`num_present` side-channel bug described in §9.
+
 ---
 
 ## 9. Known limitations
@@ -305,3 +316,4 @@ Repeat for each variant (re-flash between runs) to reproduce the full §6.1 tabl
 - Host-side latency (§8.4) reflects process-startup overhead, not embedded performance — always refer to §6.1 for real ESP32 numbers.
 - The value head's MAE (~26.6, scale 0–180) reflects a genuinely harder regression sub-task; see the confusion-matrix/scatter-plot discussion in §6.2 for where errors concentrate.
 - Vocabulary size is fixed at 118 tokens (`src/vocab.h`); this is what the deployed model was trained and exported with. Any regeneration of the dataset/vocab requires retraining before re-export.
+- **Fixed bug (see §8.7):** all three C inference variants previously omitted the value head's `num_feat`/`num_present` side-channel entirely (`Linear(194,1)` was only fed the first 192 dims), causing wrong value predictions specifically on commands containing a number (e.g. "90 degrees" → 85.3 instead of the correct 103.9). This was caught by comparing raw logits against the PyTorch reference (`scripts/compare_logits.py`) rather than relying on accuracy alone, since action/target accuracy is unaffected by a value-head bug. All three variants were patched, verified against Python, reflashed, and rebenchmarked — the §6.1 table above reflects the corrected numbers. `data/vocab.json` was also found to have drifted to 233 entries (vs the 118 the model was actually trained with); `compare_logits.py` works around this by parsing `src/vocab.h` directly.
