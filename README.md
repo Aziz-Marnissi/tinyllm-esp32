@@ -1,205 +1,303 @@
 # TinyLLM-ESP32
 
-A tiny bidirectional GRU intent-classification model, trained in PyTorch and deployed **fully on-device** on an **ESP32**, that understands free-form natural-language commands and drives real hardware (LED, 28BYJ-48 stepper motor, SG90 servo, DHT11 temperature sensor) — no cloud, no Wi-Fi, no external inference API.
+A ~81K-parameter bidirectional GRU intent-recognition model, trained in PyTorch and deployed on an ESP32 microcontroller in three numerical variants (FP32, INT8, INT8/FP32 Hybrid). This repo benchmarks all three variants end-to-end on real hardware — accuracy, latency, RAM, and Flash footprint — and provides full reproducibility for review.
 
-```
-"hey could you turn the led on please"   -> action=on          target=led
-"crank the brightness up to 80"          -> action=set_power    target=led      value=80
-"trun off the motor asap"                -> action=off          target=motor_28BYJ48
-"set servo to 90 degrees"                -> action=set_degree   target=servo    value=90
-"what's the temperature in here"         -> action=check_status target=temp_sensor
-```
-
-Robust to typos ("trun"), politeness padding ("could you... please"), and reordered phrasing ("crank the brightness up" vs "set brightness to 80") — while running in ~52 ms on a $6 microcontroller.
+**Repo:** https://github.com/Aziz-Marnissi/tinyllm-esp32
 
 ---
 
-## 1. Hardware
+## 1. Overview
 
-| Component | Model | Qty | Role |
-|---|---|---|---|
-| MCU | ESP32 (dev board) | 1 | Runs tokenizer + GRU inference + hardware control |
-| LED | 5 mm generic | 1 | Binary on/off + (future) PWM brightness target |
-| Stepper motor | 28BYJ-48 | 1 | Half-step sequence driven target |
-| Stepper driver | ULN2003 | 1 | Drives the 4 stepper coil lines from GPIO |
-| Servo | SG90 (or compatible, via `ESP32Servo`) | 1 | Angle (0–180°) driven target |
-| Temp/humidity sensor | DHT11 | 1 | `check_status` target |
-| Serial link | USB | 1 | Command input (typed sentence) + telemetry output |
+The model parses short natural-language commands ("turn on the led", "set servo to 90 degrees", "what's the temperature") and predicts three outputs jointly:
 
-### Wiring
+- **action** — one of `{on, off, set_power, set_degree, set_timer, check_status}`
+- **target** — one of `{led, motor_28BYJ48, servo, timer, temp_sensor}`
+- **value** — a continuous scalar (e.g. degree, power %, timer minutes), used when relevant
 
-| ESP32 GPIO | Connects to | Notes |
+The trained model is quantized and deployed on an ESP32 (240 MHz, 320 KB RAM, 4 MB Flash), where it drives real GPIO pins (LED, stepper motor, servo) from live serial commands.
+
+---
+
+## 2. Model Architecture
+
+### 2.1 Structure
+
+```
+Input text
+   │
+   ▼
+┌─────────────┐
+│  Tokenizer  │  word-level, fixed vocab (118 tokens), max length 12
+└─────────────┘
+   │  token ids
+   ▼
+┌─────────────┐
+│  Embedding  │  vocab_size=118 → emb_dim=32
+└─────────────┘
+   │  [seq_len, 32]
+   ▼
+┌─────────────────────┐
+│  Bidirectional GRU   │  hidden_size=96 (per direction), 1 layer
+└─────────────────────┘
+   │  concat(h_fwd, h_bwd) → [192]
+   ▼
+   ├──────────────┬──────────────┬────────────────┐
+   ▼              ▼              ▼                │
+┌─────────┐  ┌─────────┐  ┌────────────┐          │
+│ action  │  │ target  │  │   value    │◄─────────┘ (+ num_feat, num_present
+│ head    │  │ head    │  │   head     │              side-channel, 194-d in)
+│ Linear  │  │ Linear  │  │ Linear     │
+│192→6    │  │192→5    │  │194→1       │
+└─────────┘  └─────────┘  └────────────┘
+   │              │              │
+   ▼              ▼              ▼
+ action        target          value
+ logits        logits         (scalar)
+```
+
+### 2.2 Parameter count (measured, `model_seed2.pt`)
+
+| Layer | Shape | Params |
 |---|---|---|
-| `GPIO 2`  | LED anode (+ series resistor to GND) | `LED_PIN` |
-| `GPIO 5`  | Servo signal wire | `SERVO_PIN`; servo power (5V) + GND from external/board 5V rail |
-| `GPIO 4`  | DHT11 data pin | `DHT_PIN`; needs a 10kΩ pull-up to 3.3V if not on-board |
-| `GPIO 16` | ULN2003 `IN1` | `MOTOR_IN1` |
-| `GPIO 17` | ULN2003 `IN2` | `MOTOR_IN2` |
-| `GPIO 18` | ULN2003 `IN3` | `MOTOR_IN3` |
-| `GPIO 19` | ULN2003 `IN4` | `MOTOR_IN4` |
-| `5V` / `GND` | ULN2003 board, servo, DHT11 | Shared power rail; ESP32 GND common with all peripherals |
+| `embed.weight` | [118, 32] | 3,776 |
+| `gru.weight_ih_l0` (forward) | [288, 32] | 9,216 |
+| `gru.weight_hh_l0` (forward) | [288, 96] | 27,648 |
+| `gru.bias_ih_l0` / `bias_hh_l0` (forward) | [288] × 2 | 576 |
+| `gru.weight_ih_l0_reverse` | [288, 32] | 9,216 |
+| `gru.weight_hh_l0_reverse` | [288, 96] | 27,648 |
+| `gru.bias_ih_l0_reverse` / `bias_hh_l0_reverse` | [288] × 2 | 576 |
+| `action_head.weight` / `bias` | [6, 192] / [6] | 1,158 |
+| `target_head.weight` / `bias` | [5, 192] / [5] | 965 |
+| `value_head.weight` / `bias` | [1, 194] / [1] | 195 |
+| **Total** | | **80,974 (~81K)** |
 
-The stepper is driven with the standard 8-step half-step sequence (`STEP_SEQ` in `main.cpp`) through the ULN2003 Darlington array, which also protects the ESP32 GPIOs from the motor's back-EMF.
+(288 = 3 × 96, the standard GRU gate-stacking factor: reset, update, and candidate gates share the same weight matrix, stacked along the output dimension.)
+
+### 2.3 GRU update equations
+
+For each timestep $t$, with input $x_t \in \mathbb{R}^{32}$ and hidden state $h_{t-1} \in \mathbb{R}^{96}$:
+
+$$
+\begin{aligned}
+r_t &= \sigma(W_{ir} x_t + b_{ir} + W_{hr} h_{t-1} + b_{hr}) \quad &\text{(reset gate)} \\
+z_t &= \sigma(W_{iz} x_t + b_{iz} + W_{hz} h_{t-1} + b_{hz}) \quad &\text{(update gate)} \\
+n_t &= \tanh(W_{in} x_t + b_{in} + r_t \odot (W_{hn} h_{t-1} + b_{hn})) \quad &\text{(candidate state)} \\
+h_t &= (1 - z_t) \odot n_t + z_t \odot h_{t-1} \quad &\text{(new hidden state)}
+\end{aligned}
+$$
+
+The model runs this **bidirectionally**: one GRU pass left-to-right ($\overrightarrow{h}$), one right-to-left ($\overleftarrow{h}$), and the final representation is their concatenation:
+
+$$
+h_{\text{final}} = [\overrightarrow{h}_T \, ; \, \overleftarrow{h}_1] \in \mathbb{R}^{192}
+$$
+
+### 2.4 Output heads
+
+$$
+\text{action\_logits} = W_a \, h_{\text{final}} + b_a \in \mathbb{R}^6, \qquad
+\text{target\_logits} = W_t \, h_{\text{final}} + b_t \in \mathbb{R}^5
+$$
+
+The value head additionally takes a 2-dimensional side-channel $[\text{num\_feat}, \text{num\_present}]$ (whether a number was found in the text, and its normalized magnitude), concatenated to $h_{\text{final}}$:
+
+$$
+\hat{v} = W_v \, [h_{\text{final}} \, ; \, \text{num\_feat} \, ; \, \text{num\_present}] + b_v, \qquad \hat{v} \in [0, 1]
+$$
+
+The predicted value is de-normalized at inference time as $v = \hat{v} \times \text{MAX\_VALUE}$ (MAX_VALUE = 180).
+
+### 2.5 Loss
+
+$$
+\mathcal{L} = \mathcal{L}_{\text{action}}^{\text{CE}} + \mathcal{L}_{\text{target}}^{\text{CE}} + \mathbb{1}_{\text{mask}} \cdot \mathcal{L}_{\text{value}}^{\text{MAE}}
+$$
+
+Cross-entropy for the two classification heads, masked L1/MAE for the value head (only counted when the ground-truth sample actually has a value).
 
 ---
 
-## 2. Model architecture
+## 3. Quantization Variants
 
-```
-tokens (word ids, len ≤ 12)
-        │
-        ▼
-   Embedding (32-dim, padding_idx=0)
-        │
-        ▼
-  Bidirectional GRU (hidden=96)  ──►  h_fwd (96)  +  h_bwd (96)
-        │                                  │
-        └──────────────► concat h_cat (192) ◄┘
-                     │
-   ┌─────────────────┼─────────────────────┐
-   ▼                 ▼                     ▼
-action_head      target_head          value_head
-(Linear→6)       (Linear→5)     (Linear(194→1) + sigmoid)
-                                  input = h_cat ⊕ num_feat ⊕ num_present
-```
+Three inference implementations of the same trained weights, all sharing an identical `model_api.h` interface:
 
-**Why bidirectional:** a forward-only GRU can't use words that disambiguate the action *after* it appears — e.g. in "crank the brightness **up**", the direction-defining word ("up") comes at the end. Reading backward too lets that inform the very first hidden state used by the heads.
+| Variant | Weights | Accumulation | Nonlinearities | Notes |
+|---|---|---|---|---|
+| **FP32** | float32 | float32 | float32 | reference baseline, no lookup tables |
+| **INT8** | int8 | int32 | fast_sigmoid/fast_tanh (LUT, int8-domain) | fully quantized |
+| **Hybrid** | int8 (embed + GRU weights) | int32 → requantized to int8 per timestep | fast_sigmoid/fast_tanh (FP32) | quantized weights, float nonlinearities |
 
-**Why the value side-channel:** the tokenizer collapses every digit sequence into a single `<num>` token (so the vocab doesn't need one entry per possible number). That's great for classification, but it means the GRU itself never sees the actual magnitude. `extract_number()` parses the real number directly from the raw text and feeds it into the value head as two extra scalar features (`num_feat` = normalized value, `num_present` = 0/1 flag), bypassing the tokenizer entirely for that one piece of information.
+Quantization is post-training, per-tensor symmetric int8 (scale-only, zero-point=0).
 
 ---
 
-## 3. Repo structure
+## 4. Seed Selection
+
+Training is stochastic (weight init, data shuffling). Four seeds were trained and evaluated on validation data before selecting the deployed model:
+
+| Seed | val_action_acc |
+|---|---|
+| 1 | 86.8% |
+| **2** | **94.9%** ← selected |
+| 3 | ~85% |
+| 4 | ~89.4% |
+
+Seed 2 was a clear, non-marginal standout (>5pp above the next best) and was locked in as `model_seed2.pt`.
+
+---
+
+## 5. Results
+
+### 5.1 On-device benchmark (ESP32, full held-out adversarial test set, n=699)
+
+| Variant | Action Acc | Target Acc | Latency (avg) | RAM | Flash |
+|---|---|---|---|---|---|
+| INT8 | 81.5% | 100% | 69.7 ms | 21.5 KB | 357.6 KB |
+| Hybrid | 81.3% | 100% | 68.9 ms | 21.5 KB | 357.9 KB |
+| FP32 | 81.4% | 100% | 251.3 ms | 21.5 KB | 584.3 KB |
+
+**Key finding:** accuracy is statistically indistinguishable across all three variants (quantization introduces no measurable degradation), while INT8/Hybrid are **~3.6× faster** and use **~39% less Flash** than FP32.
+
+![Flash & RAM comparison](evaluation/flash_ram_comparison.png)
+![Latency comparison](evaluation/latency_comparison.png)
+![Accuracy comparison](evaluation/accuracy_comparison.png)
+![Accuracy vs latency tradeoff](evaluation/accuracy_latency_tradeoff.png)
+
+### 5.2 Validation-set diagnostics (host, seed-2 model)
+
+- `action_acc = 94.9%`, `target_acc = 98.7%`, `value_MAE = 26.6`
+
+![Action confusion matrix](evaluation/confusion_action.png)
+![Target confusion matrix](evaluation/confusion_target.png)
+![Value regression: true vs predicted](evaluation/value_scatter.png)
+
+The action confusion matrix shows the dominant error mode is **"on" misclassified as "off"** (42/699 cases) — a systematic, not random, error worth noting for future data augmentation. The value regression plot shows under-prediction at high true values (points falling below the diagonal past ~100), consistent with the MAE.
+
+> `training_curve.png` (loss/accuracy per epoch) reflects an earlier training run and is kept for illustration; it was not regenerated for the final seed-2 checkpoint (would require a full retrain to reproduce identically).
+
+---
+
+## 6. Repository Structure
 
 ```
 tinyllm-esp32/
-├── src/            # ESP32 firmware
-│   ├── main.cpp          # Arduino sketch: serial I/O, hardware routing
-│   ├── model_api.h        # public C API (tokenize, extract_number, model_forward)
-│   ├── inference.c        # forward pass: bidirectional GRU + 3 heads, int8 matmuls
-│   ├── tokenizer.c        # word tokenizer + number extraction (mirrors Python tokenizer.py)
-│   ├── lut_math.h / lut.h # 256-entry sigmoid/tanh lookup tables + linear interpolation
-│   ├── weights.h          # generated: int8 quantized weights (hybrid/int8 build)
-│   ├── weights_float.h    # generated: float32 weights (baseline build)
-│   └── vocab.h            # generated: word -> id table (118 entries)
-├── scripts/        # training + export pipeline (PyTorch, host-side)
-├── data/           # train/val/adversarial-test jsonl, vocab.json
-├── backups/        # inference.c variants (float32 / int8 / hybrid)
-├── evaluation/      # accuracy, confusion matrices, latency & flash/RAM plots
-├── tests/          # host-side C test/eval harnesses
-├── docs/           # write-up (PDF/PPTX)
-└── platformio.ini
+├── backups/              # inference.c variants (float / int8 / hybrid)
+├── data/                 # datasets: train/val/test splits, vocab
+├── docs/                 # design notes, blueprint slides/PDF
+├── evaluation/            # all plots + numerical result summaries
+├── scripts/              # training, export, evaluation, comparison scripts
+├── src/                  # ESP32 firmware: inference.c (active), tokenizer.c,
+│                         # weights.h / weights_float.h / vocab.h, main.cpp
+├── tests/                # host-side C test harnesses (no hardware needed)
+├── platformio.ini        # PlatformIO build config (ESP32 target)
+└── run_quant_comparison.sh   # full host-side 3-variant benchmark + plots
 ```
-
-### What each file does
-
-**Firmware (`src/`)**
-
-- **`main.cpp`** — Arduino entry point. Reads a line from Serial, tokenizes it, calls `model_forward`, argmaxes the two classification heads, scales the regressed value back to real units (`× 180`), and routes the result to the matching peripheral (LED digitalWrite, stepper step-sequence toggle, servo angle write, or DHT11 read).
-- **`tokenizer.c`** — Pure-C re-implementation of the Python tokenizer: lowercases, splits into alnum runs, maps digit-only runs to `<num>`, looks up each word in the generated `VOCAB` table (linear scan, 118 entries — small enough that this is fine). `extract_number()` independently pulls the first raw digit run out of the sentence for the value side-channel.
-- **`inference.c`** — The actual forward pass. `gru_step()` runs one GRU timestep fully in int8: the hidden state is re-quantized to int8 every timestep (its range keeps shifting as the state evolves), both the input→hidden and hidden→hidden matmuls accumulate in `int32_t`, then get rescaled back to float using the weight/activation quantization scales before the gate nonlinearities. `model_forward()` runs this twice (forward direction, then backward direction over the reversed sequence), concatenates the two final hidden states, and computes the three output heads as float32 dot products.
-- **`lut.h` / `lut_math.h`** — Sigmoid and tanh are the hot path (called `HIDDEN × 3` times per timestep, twice per inference). Instead of calling `expf`/`tanhf` on a microcontroller, both are precomputed into 256-entry tables over `[-8, 8]` and looked up with linear interpolation (`fast_sigmoid`, `fast_tanh`) — this is what turns the "hybrid" build's latency into the fastest of the three variants.
-- **`model_api.h`** — the C-linkage boundary the `.cpp` sketch calls into.
-- **`weights.h` / `weights_float.h` / `vocab.h`** — generated, not hand-edited (see §6).
-
-**Training pipeline (`scripts/`)**
-
-- **`tokenizer.py`** — identical tokenization logic to `tokenizer.c` (single source of truth for word→id mapping), plus `build_vocab()` which scans train+val and writes `vocab.json`.
-- **`model.py`** — defines `TinyIntentGRU` (the architecture above) and `IntentDataset` (loads jsonl rows, encodes text, builds the `mask`/`num_feat`/`num_present` side-channel tensors).
-- **`train.py`** — training loop: AdamW + cosine LR schedule + label smoothing (0.1) on the two classification losses, MSE on the masked value loss, gradient clipping, early stopping on combined val accuracy (patience 40), restores the best checkpoint before saving `model.pt`. Also generates the confusion matrices, training curve, and `summary.txt` in `evaluation/`, and reports held-out accuracy on `data/test_adversarial.jsonl` if present.
-- **`export_weights_float.py`** — dumps the trained float32 weights (both GRU directions) to `weights_float.h`.
-- **`export_weights_int8.py`** — quantizes every weight matrix to int8 (per-tensor symmetric, scale = max(|w|)/127), keeps biases in float32, writes `weights.h`.
-- **`export_vocab.py`** — dumps `vocab.json` to the `VOCAB[]` C array in `vocab.h`.
-- **`compare_inference.py` / `compare_quant.py` / `compare_tokenizer.py`** — parity checks: PyTorch vs. host-side NumPy float32 vs. host-side NumPy int8, to catch quantization or export bugs *before* flashing.
-- **`compare_quant_variants.py`** — builds all the plots in `evaluation/` (latency, flash/RAM, accuracy, accuracy-vs-latency tradeoff) from the measured on-device numbers + `evaluation/summary.txt`.
-- **`gen_value_scatter.py`** — plots true vs. predicted value on the validation set.
 
 ---
 
-## 4. Results
+## 7. Reproducing the Results
 
-### Quantization comparison (measured on-device, ESP32)
-
-| Variant | Latency | Flash | RAM | Action acc. | Target acc. |
-|---|---|---|---|---|---|
-| float32 (no LUT) | 182.4 ms | 584 KB | 21.0 KB | 91.53% | 99.71% |
-| int8 (quantized) | 52.0 ms | 358 KB | 21.0 KB | 91.53% | 99.71% |
-| hybrid (int8 + LUT + dynamic requant) | 51.5 ms | 358 KB | 21.0 KB | 91.53% | 99.71% |
-
-*(accuracy measured on the 1,051-sample validation set, host-side C harness in `tests/eval_accuracy.c`)*
-
-Int8 quantization gives a **~3.5× latency reduction** and **~37% smaller flash footprint**, with the sigmoid/tanh LUT shaving a further fraction of a millisecond off on top — for **zero loss in classification accuracy** across all three variants (91.53% action, 99.71% target).
-
-#### Latency
-
-![ESP32 on-device inference latency across float32, int8, and hybrid variants](evaluation/latency_comparison.png)
-
-#### Flash & RAM usage
-
-![Flash and RAM usage per variant](evaluation/flash_ram_comparison.png)
-
-RAM usage is effectively flat across variants (~21 KB, dominated by the input/hidden-state buffers, not the weights) — quantization only pays off on flash. Flash drops from 584 KB down to 358 KB once weights move from float32 to int8, since the biases stay float32 but every weight matrix (embedding, both GRU directions, both matmuls) is 4× smaller per element.
-
-#### Accuracy by variant
-
-![Validation action and target accuracy by quantization variant](evaluation/accuracy_comparison.png)
-
-#### Confusion matrices
-
-![Action confusion matrix](evaluation/confusion_action.png)
-
-![Target confusion matrix](evaluation/confusion_target.png)
-
-#### Training curve
-
-![Training loss and validation accuracy over epochs](evaluation/training_curve.png)
-
-#### Value regression
-
-![True vs predicted numeric value on the validation set](evaluation/value_scatter.png)
-
-#### Accuracy / latency tradeoff
-
-![Accuracy vs latency tradeoff across quantization variants](evaluation/accuracy_latency_tradeoff.png)
-
-The hybrid variant sits at the Pareto-optimal corner: same accuracy as float32, same flash/RAM as plain int8, but the fastest latency of the three thanks to the LUT-based sigmoid/tanh.
-
----
-
-## 5. Firmware ↔ training parity
-
-Everything on the ESP32 mirrors a Python counterpart exactly, so the model behaves identically on-device and on the laptop:
-
-| Firmware (C) | Python equivalent | Checked by |
-|---|---|---|
-| `tokenizer.c` | `scripts/tokenizer.py` | `compare_tokenizer.py` |
-| `inference.c` (int8 path) | `compare_quant.py`'s NumPy int8 sim | `compare_quant.py` |
-| `inference.c` (float path, `weights_float.h`) | `model.py` forward pass | `compare_inference.py` |
-
----
-
-## 6. Build & flash
-
-```bash
-pio run -t upload
-pio device monitor
-```
-
-Type a command over Serial (115200 baud), e.g. `turn on the led`, and the board prints:
-
-```
-action=on target=led value=0.0  (0.34 ms)
-```
-
-## 7. Regenerating weights after retraining
+### 7.1 Train from scratch (optional — a trained checkpoint is included)
 
 ```bash
 cd scripts
-python train.py                  # retrains, saves model.pt, updates evaluation/ plots
-python export_weights_int8.py    # -> weights.h (int8, used by inference.c)
-python export_weights_float.py   # -> weights_float.h (float32 baseline, optional)
-python export_vocab.py           # -> vocab.h
-cp weights.h vocab.h ../src/
+python3 train.py            # trains with a fixed seed, saves model.pt
+                             # early-stops on val accuracy plateau
 ```
 
-Then re-flash with `pio run -t upload`.
+### 7.2 Export weights for the C/ESP32 target
+
+```bash
+cd scripts
+python3 export_weights_int8.py     # writes weights.h (int8)
+python3 export_weights_float.py    # writes weights_float.h (fp32)
+python3 export_vocab.py            # writes vocab.h
+cp weights.h weights_float.h vocab.h ../src/
+```
+
+### 7.3 Host-side sanity check (no ESP32 needed)
+
+Quick functional test — runs a handful of hardcoded commands through the compiled C inference path and prints predictions:
+
+```bash
+gcc -O2 -o test_inf tests/test_inference.c src/inference.c src/tokenizer.c -Isrc -lm
+./test_inf
+```
+
+Expected: readable `action=... target=... value=...` output for each test sentence, no crashes.
+
+### 7.4 Full 3-variant benchmark (host, accuracy + timing)
+
+```bash
+bash run_quant_comparison.sh
+```
+
+This compiles and evaluates FP32 / INT8 / Hybrid against `data/val.jsonl`, times each on the host CPU, and regenerates all comparison plots into `evaluation/`. Expect ~94-95% action accuracy for all three variants (host timing is **not** representative of ESP32 latency — see §5.1 for real on-device numbers).
+
+### 7.5 Flash to ESP32 and validate live
+
+Requires [PlatformIO](https://platformio.org/) and an ESP32 dev board connected via USB.
+
+```bash
+# choose a variant:
+cp backups/inference_int8.c.bak src/inference.c      # or inference_hybrid.c.bak / inference_float.c.bak
+pio run -t upload                                     # compiles + flashes
+pio run -v | grep -E "RAM|Flash"                       # confirms RAM/Flash usage
+```
+
+Open the serial monitor and type a command:
+
+```bash
+pio device monitor -b 115200
+# then type: turn on the led
+# expect: action=on target=led value=... (NN.NN ms)
+```
+
+### 7.6 Full held-out test-set replay (reproduces §5.1 numbers)
+
+With the ESP32 flashed and connected (adjust `/dev/ttyUSBx` to your port):
+
+```bash
+python3 - <<'EOF'
+import serial, json, time
+
+ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=3)
+time.sleep(5)                       # let the board finish booting
+ser.reset_input_buffer()
+
+with open('data/test_adversarial_full.jsonl') as f:
+    lines = f.readlines()
+
+with open('results.txt', 'w') as out:
+    for line in lines:
+        sample = json.loads(line)
+        text = sample['text']
+        ser.reset_input_buffer()
+        ser.write((text + '\n').encode())
+        time.sleep(0.3)
+        resp = ser.readline().decode(errors='ignore').strip()
+        out.write(f"{text}\t{resp}\t{sample['action']}\t{sample['target']}\t{sample.get('value','')}\n")
+ser.close()
+EOF
+
+python3 scripts/compute_accuracy.py results.txt
+```
+
+Expect output close to:
+```
+n=697-699
+action_acc≈0.81
+target_acc=1.00
+latency_avg_ms≈69 (INT8/Hybrid) or ≈251 (FP32)
+```
+
+Repeat for each variant (re-flash between runs) to reproduce the full §5.1 table.
+
+---
+
+## 8. Known Limitations / Notes for Reviewers
+
+- `training_curve.png` is from an earlier training run, not the final seed-2 checkpoint (no epoch-level history was persisted for seed 2 — regenerating it exactly would require a full retrain).
+- Host-side latency (§7.4) reflects process-startup overhead, not embedded performance — always refer to §5.1 for real ESP32 numbers.
+- The value head's MAE (~26.6, scale 0–180) reflects a genuinely harder regression sub-task; see the confusion-matrix/scatter-plot discussion in §5.2 for where errors concentrate.
+- Vocabulary size is fixed at 118 tokens (`src/vocab.h`); this is what the deployed model was trained and exported with. Any regeneration of the dataset/vocab requires retraining before re-export.
