@@ -16,8 +16,12 @@ int main() {
     for (int t = 0; t < n; t++) {
         int ids[MAX_LEN];
         int length = tokenize(tests[t], ids);
+        float num_raw, num_feat;
+        int num_present;
+        extract_number(tests[t], &num_raw, &num_present);
+        num_feat = num_raw / 180.0f;
         float action_logits[N_ACTIONS], target_logits[N_TARGETS], value_out;
-        model_forward(tests[t], ids, length, action_logits, target_logits, &value_out);
+        model_forward(ids, length, num_feat, (float)num_present, action_logits, target_logits, &value_out);
         int best_a = 0, best_t = 0;
         for (int i = 1; i < N_ACTIONS; i++) if (action_logits[i] > action_logits[best_a]) best_a = i;
         for (int i = 1; i < N_TARGETS; i++) if (target_logits[i] > target_logits[best_t]) best_t = i;

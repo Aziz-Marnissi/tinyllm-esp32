@@ -48,7 +48,7 @@ static void gru_step(const int8_t* x_q, float* h,
     memcpy(h, new_h, sizeof(new_h));
 }
 
-void model_forward(const char* text, const int ids[MAX_LEN], int length,
+void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num_present,
                     float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out) {
     if (length <= 0) length = 1;
@@ -83,14 +83,9 @@ void model_forward(const char* text, const int ids[MAX_LEN], int length,
         for (int k = 0; k < 2 * HIDDEN; k++) sum += TARGET_W[a * 2 * HIDDEN + k] * h_cat[k];
         target_logits[a] = sum;
     }
-    float num_value;
-    int num_present;
-    extract_number(text, &num_value, &num_present);
-    float num_feat = num_value / 180.0f;
-
     float v = VALUE_B[0];
     for (int k = 0; k < 2 * HIDDEN; k++) v += VALUE_W[k] * h_cat[k];
     v += VALUE_W[2 * HIDDEN + 0] * num_feat;
-    v += VALUE_W[2 * HIDDEN + 1] * (float)num_present;
+    v += VALUE_W[2 * HIDDEN + 1] * num_present;
     *value_out = fast_sigmoid(v);
 }
