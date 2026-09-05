@@ -1,4 +1,4 @@
-# 🤖 TinyGRU-ESP32: An Embedded Voice/Text Command Controller
+# 🤖 TinyGRU-ESP32: An Embedded Text Command Controller
 
 > An ~81K-parameter bidirectional GRU intent-recognition model, trained in PyTorch and deployed on a $5 microcontroller — quantized three ways, benchmarked on real hardware, and fully reproducible.
 
