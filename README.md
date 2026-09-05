@@ -6,7 +6,7 @@
 [![Framework](https://img.shields.io/badge/framework-PyTorch%20%7C%20PlatformIO-orange)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 
-**Repo:** https://github.com/Aziz-Marnissi/tinyllm-esp32
+**Repo:** https://github.com/Aziz-Marnissi/tinyGRU-esp32
 
 ---
 
@@ -20,7 +20,6 @@
 6. [📊 Results](#6--results)
 7. [📁 Repository structure](#7--repository-structure)
 8. [🔁 Reproducing the results](#8--reproducing-the-results)
-9. [⚠️ Known limitations](#9-️-known-limitations)
 
 ---
 
