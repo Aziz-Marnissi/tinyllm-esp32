@@ -205,13 +205,9 @@ int main(int argc, char** argv) {
 
         int ids[MAX_LEN];
         int length = tokenize(text, ids);
-        float num_raw, num_feat;
-        int num_present;
-        extract_number(text, &num_raw, &num_present);
-        num_feat = num_raw / 180.0f;
 
         float action_logits[N_ACTIONS], target_logits[N_TARGETS], value_out;
-        model_forward(ids, length, num_feat, (float)num_present, action_logits, target_logits, &value_out);
+        model_forward(ids, length, action_logits, target_logits, &value_out);
 
         int pred_action = 0;
         for (int i = 1; i < N_ACTIONS; i++)
@@ -265,7 +261,7 @@ for i in "${!VARIANTS[@]}"; do
         continue
     fi
 
-    gcc -O2 -o "$TINYLLM/test_inf_bin" "$TINYLLM/test_inference.c" "$TINYLLM/src/inference.c" "$TINYLLM/src/tokenizer.c" -I"$TINYLLM/src" -lm
+    gcc -O2 -o "$TINYLLM/test_inf_bin" "$TINYLLM/tests/test_inference.c" "$TINYLLM/src/inference.c" "$TINYLLM/src/tokenizer.c" -I"$TINYLLM/src" -lm
 
     total=0
     runs=20

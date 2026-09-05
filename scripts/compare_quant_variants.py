@@ -8,9 +8,9 @@ os.makedirs(OUT_DIR, exist_ok=True)
 variants = ["float32\n(no LUT)", "int8\n(quantized)", "hybrid\n(int8+dyn-requant)"]
 
 # ESP32 on-device latency (from serial monitor) - the numbers that actually matter
-esp32_latency_ms = [182.42, 52.02, 51.53]
+esp32_latency_ms = [251.3, 69.7, 68.9]
 
-flash_bytes = [598465, 366405, 366677]
+flash_bytes = [598269, 366217, 366489]
 ram_bytes = [21500, 21496, 21496]
 
 # Host (laptop) latency - dominated by process startup overhead, NOT representative
@@ -102,8 +102,7 @@ def plot_tradeoff():
         if acc is None:
             continue
         ax.scatter(lat, acc, s=80)
-        offset = (10, 10) if i % 2 == 0 else (10, -15)
-        ax.annotate(name.replace("\n", " "), (lat, acc), textcoords="offset points", xytext=offset, fontsize=9)
+        ax.annotate(name.replace("\n", " "), (lat, acc), textcoords="offset points", xytext=(5, 5 + 15*i))
     ax.set_xlabel("Latency (ms)")
     ax.set_ylabel("Action accuracy")
     ax.set_title("Accuracy vs Latency Tradeoff")

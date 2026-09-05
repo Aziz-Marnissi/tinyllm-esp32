@@ -92,6 +92,11 @@ def evaluate_full(model, val_ds, history, device):
 
 
 def main():
+    import torch, random, numpy as np
+    SEED = 4
+    torch.manual_seed(SEED)
+    random.seed(SEED)
+    np.random.seed(SEED)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("device:", device)
 
@@ -120,7 +125,7 @@ def main():
 
     best_acc = -1.0
     best_state = None
-    patience = 40
+    patience = 60
     epochs_no_improve = 0
 
     history = []
@@ -142,7 +147,7 @@ def main():
         total_loss /= len(train_ds)
         scheduler.step()
 
-        if epoch % 5 == 0 or epoch == epochs:
+        if epoch % 3 == 0 or epoch == epochs:
             model.eval()
             correct_a = correct_t = n = 0
             with torch.no_grad():

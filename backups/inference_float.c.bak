@@ -26,7 +26,7 @@ static void gru_step(const float* x, float* h,
     memcpy(h, new_h, sizeof(new_h));
 }
 
-void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num_present,
+void model_forward(const int ids[MAX_LEN], int length,
                     float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out) {
     if (length <= 0) length = 1;
@@ -62,6 +62,5 @@ void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num
     }
     float v = VALUE_B[0];
     for (int k = 0; k < 2 * HIDDEN; k++) v += VALUE_W[k] * h_cat[k];
-    v += VALUE_W[2 * HIDDEN] * num_feat + VALUE_W[2 * HIDDEN + 1] * num_present;
     *value_out = 1.0f / (1.0f + expf(-v));
 }

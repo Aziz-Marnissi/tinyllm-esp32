@@ -1,0 +1,4 @@
+val_action_acc=0.9486
+val_target_acc=0.9867
+value_MAE=26.629
+n_val_samples=1051

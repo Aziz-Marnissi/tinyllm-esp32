@@ -1,0 +1,93 @@
+hey is light off	action=check_status target=led value=73.6  (47.88 ms)	check_status	led	None
+start the servo motor asap	action=on target=servo value=102.0  (58.44 ms)	on	servo	None
+hmm fire up motor please	action=off target=motor_28BYJ48 value=101.3  (58.20 ms)	on	motor_28BYJ48	None
+hmm dim led to 48 percent	action=set_power target=led value=41.5  (69.04 ms)	set_power	led	48
+please fire up led	action=off target=led value=87.5  (47.76 ms)	on	led	None
+yo could you rotate the servo to 144	action=set_degree target=servo value=94.2  (90.11 ms)	set_degree	servo	144
+hmm run led now	action=off target=led value=79.6  (47.77 ms)	on	led	None
+please pls turn off the lamp thanks	action=off target=led value=75.1  (79.38 ms)	off	led	None
+hmm spin up servo	action=off target=servo value=96.4  (47.90 ms)	on	servo	None
+hey fire up 28byj48 asap	action=off target=motor_28BYJ48 value=94.8  (58.18 ms)	on	motor_28BYJ48	None
+yo i want the servo to go to 57 degrees please thanks	action=set_degree target=servo value=96.2  (132.28 ms)	set_degree	servo	57
+yo pls turn off the light now	action=off target=led value=79.4  (79.41 ms)	off	led	None
+ok is 28byj48 off	action=check_status target=motor_28BYJ48 value=93.7  (47.76 ms)	check_status	motor_28BYJ48	None
+fire up the motor	action=off target=motor_28BYJ48 value=101.7  (47.68 ms)	on	motor_28BYJ48	None
+i want the servo to go to 2 degrees please	action=set_degree target=servo value=88.1  (111.24 ms)	set_degree	servo	2
+ok run stepper thanks	action=off target=motor_28BYJ48 value=95.8  (47.71 ms)	on	motor_28BYJ48	None
+please set the light brightness to 62	action=set_power target=led value=38.0  (79.57 ms)	set_power	led	62
+hmm shut down stepper	action=off target=motor_28BYJ48 value=84.1  (47.67 ms)	off	motor_28BYJ48	None
+is servo off	action=check_status target=servo value=99.6  (37.41 ms)	check_status	servo	None
+could you rotate the servo motor to 161	action=set_degree target=servo value=93.6  (90.09 ms)	set_degree	servo	161
+hmm spin up the motor asap	action=off target=motor_28BYJ48 value=93.0  (68.69 ms)	on	motor_28BYJ48	None
+shut down stepper	action=off target=motor_28BYJ48 value=86.5  (37.21 ms)	off	motor_28BYJ48	None
+spin up the stepper motor	action=off target=motor_28BYJ48 value=102.2  (58.31 ms)	on	motor_28BYJ48	None
+hmm shut down stepper motor	action=off target=motor_28BYJ48 value=94.6  (58.30 ms)	off	motor_28BYJ48	None
+spin up the servo motor please	action=off target=servo value=106.1  (69.02 ms)	on	servo	None
+please pls turn off 28byj48	action=off target=motor_28BYJ48 value=98.2  (58.24 ms)	off	motor_28BYJ48	None
+please spin up servo asap	action=off target=servo value=98.9  (58.32 ms)	on	servo	None
+please could you rotate servo to 33 thanks	action=set_degree target=servo value=95.7  (89.95 ms)	set_degree	servo	33
+dim led to 46 percent	action=set_power target=led value=43.8  (58.54 ms)	set_power	led	46
+hey fire up led thanks	action=off target=led value=79.2  (58.24 ms)	on	led	None
+yo start a 53 minute timer now	action=set_timer target=timer value=34.0  (79.24 ms)	set_timer	timer	53
+set the light brightness to 48	action=set_power target=led value=42.3  (69.09 ms)	set_power	led	48
+shut down 28byj48 now	action=off target=motor_28BYJ48 value=93.3  (47.69 ms)	off	motor_28BYJ48	None
+yo shut light down please	action=off target=led value=69.9  (58.28 ms)	off	led	None
+pls turn off light asap	action=off target=led value=68.6  (58.35 ms)	off	led	None
+could you start a timer for 41 minutes	action=set_timer target=timer value=29.1  (89.81 ms)	set_timer	timer	41
+shut lamp down	action=off target=led value=77.6  (37.19 ms)	off	led	None
+could you tell me the temperature thanks	action=check_status target=temp_sensor value=90.7  (79.15 ms)	check_status	temp_sensor	None
+spin up the light please	action=off target=led value=77.0  (58.33 ms)	on	led	None
+run stepper motor asap	action=off target=motor_28BYJ48 value=97.1  (47.88 ms)	on	motor_28BYJ48	None
+ok run servo asap	action=off target=servo value=99.5  (47.84 ms)	on	servo	None
+please shut down the stepper motor thanks	action=off target=motor_28BYJ48 value=92.2  (79.28 ms)	off	motor_28BYJ48	None
+ok run light thanks	action=off target=led value=76.3  (47.74 ms)	on	led	None
+ok i want the servo to go to 77 degrees please	action=set_degree target=servo value=90.5  (121.69 ms)	set_degree	servo	77
+please is it hot in here	action=check_status target=temp_sensor value=77.7  (68.59 ms)	check_status	temp_sensor	None
+could you start timer for 49 minutes	action=set_timer target=timer value=30.4  (79.17 ms)	set_timer	timer	49
+please shut stepper motor down now	action=off target=motor_28BYJ48 value=98.9  (68.79 ms)	off	motor_28BYJ48	None
+power down the servo motor thanks	action=off target=servo value=109.2  (68.97 ms)	off	servo	None
+dim led to 87 percent	action=set_power target=led value=43.8  (58.55 ms)	set_power	led	87
+hmm start led thanks	action=on target=led value=76.4  (47.63 ms)	on	led	None
+hmm dim led to 95 percent	action=set_power target=led value=41.5  (69.06 ms)	set_power	led	95
+yo i want the servo to go to 153 degrees please	action=set_degree target=servo value=90.1  (121.78 ms)	set_degree	servo	153
+hey shut down stepper asap	action=off target=motor_28BYJ48 value=85.3  (58.18 ms)	off	motor_28BYJ48	None
+spin up the motor please	action=off target=motor_28BYJ48 value=100.8  (58.23 ms)	on	motor_28BYJ48	None
+ok start led now	action=on target=led value=74.4  (47.63 ms)	on	led	None
+ok is lamp off thanks	action=check_status target=led value=67.2  (58.19 ms)	check_status	led	None
+could you rotate the servo motor to 27	action=set_degree target=servo value=93.6  (90.11 ms)	set_degree	servo	27
+hey fire up light	action=off target=led value=88.2  (47.78 ms)	on	led	None
+ok is the servo motor off thanks	action=check_status target=servo value=101.9  (79.53 ms)	check_status	servo	None
+power down 28byj48 thanks	action=off target=motor_28BYJ48 value=100.2  (47.69 ms)	off	motor_28BYJ48	None
+ok dim led to 80 percent thanks	action=set_power target=led value=46.8  (79.57 ms)	set_power	led	80
+hey shut the lamp down	action=off target=led value=72.1  (58.21 ms)	off	led	None
+start a 26 minute timer	action=set_timer target=timer value=31.1  (58.22 ms)	set_timer	timer	26
+ok adjust led power to 50	action=set_power target=led value=45.1  (68.83 ms)	set_power	led	50
+hmm pls turn off led please	action=off target=led value=71.4  (68.88 ms)	off	led	None
+ok fire up the light thanks	action=off target=led value=78.2  (68.77 ms)	on	led	None
+hmm start a 30 minute timer	action=set_timer target=timer value=29.5  (68.75 ms)	set_timer	timer	30
+hmm shut the stepper motor down	action=off target=motor_28BYJ48 value=95.9  (68.85 ms)	off	motor_28BYJ48	None
+ok could you tell me the temperature please	action=check_status target=temp_sensor value=86.8  (89.63 ms)	check_status	temp_sensor	None
+hmm start servo	action=on target=servo value=88.6  (37.28 ms)	on	servo	None
+run the led asap	action=off target=led value=70.2  (47.79 ms)	on	led	None
+i want the servo to go to 111 degrees please asap	action=set_degree target=servo value=84.9  (121.69 ms)	set_degree	servo	111
+fire up light asap	action=off target=led value=72.8  (47.77 ms)	on	led	None
+yo i want the servo to go to 152 degrees please	action=set_degree target=servo value=90.1  (121.79 ms)	set_degree	servo	152
+yo pls turn off the lamp thanks	action=off target=led value=78.8  (79.41 ms)	off	led	None
+yo run the stepper motor asap	action=off target=motor_28BYJ48 value=92.6  (68.93 ms)	on	motor_28BYJ48	None
+yo is the led off asap	action=check_status target=led value=61.2  (69.00 ms)	check_status	led	None
+please start stepper asap	action=on target=motor_28BYJ48 value=87.5  (47.63 ms)	on	motor_28BYJ48	None
+yo i want the servo to go to 137 degrees please now	action=set_degree target=servo value=94.1  (132.29 ms)	set_degree	servo	137
+please start servo	action=on target=servo value=94.7  (37.25 ms)	on	servo	None
+power down lamp asap	action=off target=led value=73.0  (47.67 ms)	off	led	None
+hmm run servo motor thanks	action=off target=servo value=105.0  (58.43 ms)	on	servo	None
+hey pls turn off stepper asap	action=off target=motor_28BYJ48 value=90.6  (68.74 ms)	off	motor_28BYJ48	None
+please adjust led power to 53 thanks	action=set_power target=led value=51.9  (79.33 ms)	set_power	led	53
+dim led to 97 percent thanks	action=set_power target=led value=51.2  (69.14 ms)	set_power	led	97
+please could you rotate the servo to 82 asap	action=set_degree target=servo value=90.7  (100.57 ms)	set_degree	servo	82
+hey dim led to 24 percent thanks	action=set_power target=led value=47.9  (79.59 ms)	set_power	led	24
+hmm adjust led power to 37 asap	action=set_power target=led value=47.5  (79.40 ms)	set_power	led	37
+please dim led to 7 percent thanks	action=set_power target=led value=47.2  (79.63 ms)	set_power	led	7
+hmm dim led to 40 percent	action=set_power target=led value=41.5  (69.05 ms)	set_power	led	40
+hey could you start a timer for 48 minutes please	action=set_timer target=timer value=28.8  (110.84 ms)	set_timer	timer	48
+ok adjust led power to 57 thanks	action=set_power target=led value=51.3  (79.31 ms)	set_power	led	57
+adjust led power to 11 now	action=set_power target=led value=53.0  (68.89 ms)	set_power	led	11

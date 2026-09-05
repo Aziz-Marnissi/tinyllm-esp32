@@ -16,9 +16,6 @@ static void quantize_h(const float* h, int8_t* h_q, float* scale_out) {
     *scale_out = scale;
 }
 
-// Full int8: weights AND hidden-state activations are int8, both matmuls
-// accumulate in int32. h is re-quantized fresh every timestep since its
-// range shifts as the GRU state evolves.
 static void gru_step(const int8_t* x_q, float* h,
                       const int8_t* w_ih, float w_ih_scale,
                       const int8_t* w_hh, float w_hh_scale,
@@ -50,7 +47,7 @@ static void gru_step(const int8_t* x_q, float* h,
     memcpy(h, new_h, sizeof(new_h));
 }
 
-void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num_present,
+void model_forward(const int ids[MAX_LEN], int length,
                     float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out) {
     if (length <= 0) length = 1;
@@ -87,6 +84,5 @@ void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num
     }
     float v = VALUE_B[0];
     for (int k = 0; k < 2 * HIDDEN; k++) v += VALUE_W[k] * h_cat[k];
-    v += VALUE_W[2 * HIDDEN] * num_feat + VALUE_W[2 * HIDDEN + 1] * num_present;
     *value_out = fast_sigmoid(v);
 }

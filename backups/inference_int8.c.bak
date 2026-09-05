@@ -6,7 +6,8 @@
 #define MAX_LEN 12
 
 // Static int8 embedding lookup, dequantized on the fly for the matmul inputs.
-// Weights (w_ih, w_hh) stay int8; accumulation happens in int32.
+// Weights (w_ih, w_hh) stay int8; accumulation happens in int32 for ih,
+// hidden activations stay float (weight-only quantization style).
 static void gru_step(const int8_t* x_q, float* h,
                       const int8_t* w_ih, float w_ih_scale,
                       const int8_t* w_hh, float w_hh_scale,
@@ -19,8 +20,6 @@ static void gru_step(const int8_t* x_q, float* h,
         for (int k = 0; k < EMB_DIM; k++) acc_i += (int32_t)w_row_i[k] * (int32_t)x_q[k];
         gi[g] = acc_i * (w_ih_scale * EMBED_W_SCALE) + b_ih[g];
 
-        // h is kept float (accuracy of gates matters more than speed here,
-        // matches the "static-quantization" style: weights int8, activations float)
         float sum_h = b_hh[g];
         const int8_t* w_row_h = &w_hh[g * HIDDEN];
         for (int k = 0; k < HIDDEN; k++) sum_h += w_row_h[k] * w_hh_scale * h[k];
@@ -36,7 +35,7 @@ static void gru_step(const int8_t* x_q, float* h,
     memcpy(h, new_h, sizeof(new_h));
 }
 
-void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num_present,
+void model_forward(const int ids[MAX_LEN], int length,
                     float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out) {
     if (length <= 0) length = 1;
@@ -73,6 +72,5 @@ void model_forward(const int ids[MAX_LEN], int length, float num_feat, float num
     }
     float v = VALUE_B[0];
     for (int k = 0; k < 2 * HIDDEN; k++) v += VALUE_W[k] * h_cat[k];
-    v += VALUE_W[2 * HIDDEN] * num_feat + VALUE_W[2 * HIDDEN + 1] * num_present;
     *value_out = fast_sigmoid(v);
 }
