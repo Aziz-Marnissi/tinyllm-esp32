@@ -100,17 +100,17 @@ This matters for short commands where a late token can disambiguate an early one
 ### 3.5 Output heads
 
 $$
-\text{action\_logits} = W_a \, h_{\text{final}} + b_a \in \mathbb{R}^6, \qquad
-\text{target\_logits} = W_t \, h_{\text{final}} + b_t \in \mathbb{R}^5
+\text{action\\_logits} = W_a \, h_{\text{final}} + b_a \in \mathbb{R}^6, \qquad
+\text{target\\_logits} = W_t \, h_{\text{final}} + b_t \in \mathbb{R}^5
 $$
 
 The value head additionally takes the 2-d side-channel `num_feat`, `num_present` (whether a number was found in the text, and its normalized magnitude), concatenated to $h_{\text{final}}$:
 
 $$
-\hat{v} = W_v \, [h_{\text{final}} \, ; \, \text{num\_feat} \, ; \, \text{num\_present}] + b_v, \qquad \hat{v} \in [0, 1]
+\hat{v} = W_v \, [h_{\text{final}} \, ; \, \text{num\\_feat} \, ; \, \text{num\\_present}] + b_v, \qquad \hat{v} \in [0, 1]
 $$
 
-The predicted value is de-normalized at inference time as $v = \hat{v} \times \text{MAX\_VALUE}$ (MAX_VALUE = 180). This side-channel exists because the value head otherwise has to *infer numeracy purely from embeddings* — giving it an explicit "is there a number here" signal makes the regression sub-task tractable at this parameter budget.
+The predicted value is de-normalized at inference time as $v = \hat{v} \times \text{MAX\\_VALUE}$ (MAX_VALUE = 180). This side-channel exists because the value head otherwise has to *infer numeracy purely from embeddings* — giving it an explicit "is there a number here" signal makes the regression sub-task tractable at this parameter budget.
 
 ### 3.6 Loss and how it's optimized
 
