@@ -184,19 +184,18 @@ The action confusion matrix shows the dominant error mode is **"on" misclassifie
 
 ## 7. Repository structure
 
-```
 tinyllm-esp32/
-├── backups/              # inference.c variants (float / int8 / hybrid)
-├── data/                 # datasets: train/val/test splits, vocab
-├── docs/                 # design notes, blueprint slides/PDF
-├── evaluation/           # all plots + numerical result summaries
-├── scripts/              # training, export, evaluation, comparison scripts
-├── src/                  # ESP32 firmware: inference.c (active), tokenizer.c,
-│                         # weights.h / weights_float.h / vocab.h, main.cpp
-├── tests/                # host-side C test harnesses (no hardware needed)
-├── platformio.ini        # PlatformIO build config (ESP32 target)
-└── run_quant_comparison.sh   # full host-side 3-variant benchmark + plots
-```
+├── backups/ # inference.c variants (float / int8 / hybrid)
+├── data/ # datasets: train/val/test splits, vocab
+├── docs/ # design notes, blueprint slides/PDF
+├── evaluation/ # all plots + numerical result summaries
+├── scripts/ # training, export, evaluation, comparison scripts
+├── src/ # ESP32 firmware: inference.c (active), tokenizer.c,
+│ # weights.h / weights_float.h / vocab.h, main.cpp
+├── tests/ # host-side C test harnesses (no hardware needed)
+├── platformio.ini # PlatformIO build config (ESP32 target)
+└── run_quant_comparison.sh # full host-side 3-variant benchmark + plots
+
 
 ---
 
@@ -263,7 +262,7 @@ pio device monitor -b 115200
 With the ESP32 flashed and connected (adjust `/dev/ttyUSBx` to your port):
 
 ```bash
-python3 - <<'EOF'
+python3 - <<'PYEOF'
 import serial, json, time
 
 ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=3)
@@ -283,18 +282,18 @@ with open('results.txt', 'w') as out:
         resp = ser.readline().decode(errors='ignore').strip()
         out.write(f"{text}\t{resp}\t{sample['action']}\t{sample['target']}\t{sample.get('value','')}\n")
 ser.close()
-EOF
+PYEOF
 
 python3 scripts/compute_accuracy.py results.txt
 ```
 
 Expect output close to:
-```
+
 n=697-699
 action_acc≈0.81
 target_acc=1.00
 latency_avg_ms≈69 (INT8/Hybrid) or ≈251 (FP32)
-```
+
 
 Repeat for each variant (re-flash between runs) to reproduce the full §6.1 table.
 
