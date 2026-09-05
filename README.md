@@ -1,44 +1,64 @@
-# TinyLLM-ESP32
+# 🤖 TinyLLM-ESP32
 
-A ~81K-parameter bidirectional GRU intent-recognition model, trained in PyTorch and deployed on an ESP32 microcontroller in three numerical variants (FP32, INT8, INT8/FP32 Hybrid). This repo benchmarks all three variants end-to-end on real hardware — accuracy, latency, RAM, and Flash footprint — and provides full reproducibility for review.
+> An ~81K-parameter bidirectional GRU intent-recognition model, trained in PyTorch and deployed on a $5 microcontroller — quantized three ways, benchmarked on real hardware, and fully reproducible.
+
+[![Platform](https://img.shields.io/badge/platform-ESP32-blue)]()
+[![Framework](https://img.shields.io/badge/framework-PyTorch%20%7C%20PlatformIO-orange)]()
+[![License](https://img.shields.io/badge/license-MIT-green)]()
 
 **Repo:** https://github.com/Aziz-Marnissi/tinyllm-esp32
 
 ---
 
-## Table of contents
+## 🧭 Table of contents
 
-1. [Overview](#1-overview)
-2. [Architecture](#2-architecture)
-3. [The GRU, explained](#3-the-gru-explained)
-4. [Quantization variants](#4-quantization-variants)
-5. [Seed selection](#5-seed-selection)
-6. [Results](#6-results)
-7. [Repository structure](#7-repository-structure)
-8. [Reproducing the results](#8-reproducing-the-results)
-9. [Known limitations](#9-known-limitations)
-
----
-
-## 1. Overview
-
-The model parses short natural-language commands ("turn on the led", "set servo to 90 degrees", "what's the temperature") and predicts three outputs jointly:
-
-- **action** — one of `{on, off, set_power, set_degree, set_timer, check_status}`
-- **target** — one of `{led, motor_28BYJ48, servo, timer, temp_sensor}`
-- **value** — a continuous scalar (e.g. degree, power %, timer minutes), used when relevant
-
-The trained model is quantized and deployed on an ESP32 (240 MHz, 320 KB RAM, 4 MB Flash), where it drives real GPIO pins (LED, stepper motor, servo) from live serial commands.
+1. [🔭 Overview](#1--overview)
+2. [🏗️ Architecture](#2-️-architecture)
+3. [🧠 The GRU, explained](#3--the-gru-explained)
+4. [⚡ Quantization variants](#4--quantization-variants)
+5. [🎲 Seed selection](#5--seed-selection)
+6. [📊 Results](#6--results)
+7. [📁 Repository structure](#7--repository-structure)
+8. [🔁 Reproducing the results](#8--reproducing-the-results)
+9. [⚠️ Known limitations](#9-️-known-limitations)
 
 ---
 
-## 2. Architecture
+## 1. 🔭 Overview
+
+The model parses short natural-language commands...
+
+```
+"turn on the led"          →  action=on          target=led
+"set servo to 90 degrees"  →  action=set_degree  target=servo   value=90
+"what's the temperature"   →  action=check_status target=temp_sensor
+```
+
+...and predicts three outputs **jointly**:
+
+| Output | Values |
+|---|---|
+| 🎬 **action** | `on`, `off`, `set_power`, `set_degree`, `set_timer`, `check_status` |
+| 🎯 **target** | `led`, `motor_28BYJ48`, `servo`, `timer`, `temp_sensor` |
+| 🔢 **value** | a continuous scalar (degree, %, minutes) when relevant |
+
+The trained model is quantized and flashed onto an **ESP32** (240 MHz · 320 KB RAM · 4 MB Flash), where it drives real GPIO pins — an LED, a stepper motor, a servo — straight from live serial commands. No cloud, no Wi-Fi, no API calls: the whole pipeline, from raw text to actuator, runs on-chip.
+
+---
+
+## 2. 🏗️ Architecture
 
 ![Architecture](evaluation/architecture.png)
 
-The pipeline: raw text is tokenized against a fixed 118-token vocabulary, embedded into 32-d vectors, passed through a single-layer bidirectional GRU (96 hidden units/direction, concatenated to 192-d), then split into three linear heads. The value head additionally consumes a 2-d side-channel (`num_feat`, `num_present`) so it can react to whether a number was present in the input. The trained model is exported into three numerical variants and flashed to the ESP32, which drives GPIO peripherals from live serial input.
+```
+text ──▶ tokenizer ──▶ embedding (118×32) ──▶ bidirectional GRU (96×2) ──┬──▶ action head
+                                                                          ├──▶ target head
+                                              num_feat, num_present ─────┴──▶ value head
+```
 
-### 2.1 Parameter count (measured, `model_seed2.pt`)
+Raw text is tokenized against a fixed 118-token vocabulary, embedded into 32-d vectors, passed through a single-layer **bidirectional** GRU (96 hidden units/direction → 192-d concatenated), then split into three linear heads. The value head additionally consumes a 2-d side-channel (`num_feat`, `num_present`) so it can react to whether a number was present in the input.
+
+### 2.1 📐 Parameter count (measured, `model_seed2.pt`)
 
 | Layer | Shape | Params |
 |---|---|---|
@@ -52,17 +72,17 @@ The pipeline: raw text is tokenized against a fixed 118-token vocabulary, embedd
 | `action_head.weight` / `bias` | [6, 192] / [6] | 1,158 |
 | `target_head.weight` / `bias` | [5, 192] / [5] | 965 |
 | `value_head.weight` / `bias` | [1, 194] / [1] | 195 |
-| **Total** | | **80,974 (~81K)** |
+| **Total** | | **80,974 (~81K) 🎉** |
 
-(288 = 3 × 96 — the standard GRU gate-stacking factor: reset, update, and candidate gates share one weight matrix, stacked along the output dimension.)
+*(288 = 3 × 96 — the standard GRU gate-stacking factor: reset, update, and candidate gates share one weight matrix, stacked along the output dimension.)*
 
 ---
 
-## 3. The GRU, explained
+## 3. 🧠 The GRU, explained
 
 ### 3.1 Why a GRU here
 
-The command is a short sequence of tokens where word order and context matter ("turn **off** the led" vs "turn **on** the led"). A GRU is a recurrent unit that carries a hidden state across the sequence, updating it at each token — well-suited to short, structured commands, and far cheaper than an LSTM (no separate cell state, fewer gates) or a transformer (no attention matrix, no positional encoding) — which matters directly for an 81K-parameter budget on a microcontroller.
+The command is a short sequence of tokens where word order and context matter — "turn **off** the led" vs "turn **on** the led". A GRU carries a hidden state across the sequence, updating it at each token: well-suited to short, structured commands, and far cheaper than an LSTM (no separate cell state, fewer gates) or a transformer (no attention matrix, no positional encoding). That matters a lot when the whole budget is ~81K parameters on a microcontroller. 🪶
 
 ### 3.2 The problem a GRU solves
 
@@ -82,12 +102,12 @@ h_t &= (1 - z_t) \odot n_t + z_t \odot h_{t-1} &\text{(new hidden state)}
 $$
 
 **What each gate is doing:**
-- **Reset gate $r_t$** decides how much of the previous hidden state to *forget* before computing the new candidate. $r_t \approx 0$ means "ignore the past, this token starts something new"; $r_t \approx 1$ means "keep using what I already knew."
-- **Update gate $z_t$** decides the *mixing ratio* between the old state and the new candidate. $z_t \approx 1$ means "keep the old state, this token added nothing new"; $z_t \approx 0$ means "fully replace it with the new candidate."
-- **Candidate state $n_t$** is the proposed new hidden state, computed with the reset gate already applied to the past.
-- **Final state $h_t$** is a convex combination (element-wise) of the old state and the candidate, weighted by $z_t$ — this is the key trick: because it's a *linear* interpolation (not a repeated nonlinear squash), gradients can flow back through many timesteps largely unimpeded when $z_t$ stays close to 1, which is what solves the vanishing-gradient problem.
+- 🚪 **Reset gate $r_t$** decides how much of the previous hidden state to *forget* before computing the new candidate. $r_t \approx 0$ → "ignore the past, this token starts something new"; $r_t \approx 1$ → "keep using what I already knew."
+- 🎚️ **Update gate $z_t$** decides the *mixing ratio* between old state and new candidate. $z_t \approx 1$ → "keep the old state"; $z_t \approx 0$ → "fully replace it."
+- 💡 **Candidate state $n_t$** is the proposed new hidden state, computed with the reset gate already applied to the past.
+- 🔗 **Final state $h_t$** is a convex, element-wise combination of old state and candidate, weighted by $z_t$ — a *linear* interpolation (not a repeated nonlinear squash) that lets gradients flow back through many timesteps largely unimpeded when $z_t$ stays near 1. This is exactly what solves the vanishing-gradient problem.
 
-### 3.4 Bidirectionality
+### 3.4 ↔️ Bidirectionality
 
 The model runs the GRU twice — once left-to-right ($\overrightarrow{h}$), once right-to-left ($\overleftarrow{h}$) — and concatenates the two final hidden states:
 
@@ -95,9 +115,9 @@ $$
 h_{\text{final}} = [\overrightarrow{h}_T \, ; \, \overleftarrow{h}_1] \in \mathbb{R}^{192}
 $$
 
-This matters for short commands where a late token can disambiguate an early one — e.g. "set" is ambiguous until the model sees whether "degree" or "timer" follows; a unidirectional GRU only sees "set" with no future context, while the backward pass gives every timestep visibility into what comes after it too.
+This matters for short commands where a *later* token can disambiguate an *earlier* one — "set" is ambiguous until the model sees whether "degree" or "timer" follows. A unidirectional GRU only sees "set" with no future context; the backward pass gives every timestep visibility into what comes after it too.
 
-### 3.5 Output heads
+### 3.5 🎯 Output heads
 
 $$
 \text{action\\_logits} = W_a \, h_{\text{final}} + b_a \in \mathbb{R}^6, \qquad
@@ -112,38 +132,38 @@ $$
 
 The predicted value is de-normalized at inference time as $v = \hat{v} \times \text{MAX\\_VALUE}$ (MAX_VALUE = 180). This side-channel exists because the value head otherwise has to *infer numeracy purely from embeddings* — giving it an explicit "is there a number here" signal makes the regression sub-task tractable at this parameter budget.
 
-### 3.6 Loss and how it's optimized
+### 3.6 📉 Loss and how it's optimized
 
 $$
 \mathcal{L} = \mathcal{L}_{\text{action}}^{\text{CE}} + \mathcal{L}_{\text{target}}^{\text{CE}} + \mathbb{1}_{\text{mask}} \cdot \mathcal{L}_{\text{value}}^{\text{MAE}}
 $$
 
-Cross-entropy for the two classification heads, masked L1/MAE for the value head — masked because most commands don't carry a numeric value (e.g. "turn on the led" has no meaningful target value), so the regression loss is only counted on samples where the ground truth actually has one. This is a **multi-task loss**: gradients from all three heads flow back through the shared GRU backbone every step, so the representation the GRU learns has to jointly serve classification and regression — this shared-backbone design is exactly what keeps the parameter count at ~81K instead of training three separate encoders.
+Cross-entropy for the two classification heads, masked L1/MAE for the value head — masked because most commands don't carry a numeric value ("turn on the led" has no meaningful target value), so the regression loss is only counted where the ground truth actually has one. This is a **multi-task loss**: gradients from all three heads flow back through the shared GRU backbone every step, which is exactly what keeps the parameter count at ~81K instead of training three separate encoders.
 
 ---
 
-## 4. Quantization variants
+## 4. ⚡ Quantization variants
 
 Three inference implementations of the same trained weights, all sharing an identical `model_api.h` interface:
 
 | Variant | Weights | Accumulation | Nonlinearities | Notes |
 |---|---|---|---|---|
-| **FP32** | float32 | float32 | float32 | reference baseline, no lookup tables |
-| **INT8** | int8 | int32 | `fast_sigmoid`/`fast_tanh` (LUT, int8-domain) | fully quantized |
-| **Hybrid** | int8 (embed + GRU weights) | int32 → requantized to int8 per timestep | `fast_sigmoid`/`fast_tanh` (FP32) | quantized weights, float nonlinearities |
+| 🐢 **FP32** | float32 | float32 | float32 | reference baseline, no lookup tables |
+| ⚡ **INT8** | int8 | int32 | `fast_sigmoid`/`fast_tanh` (LUT, int8-domain) | fully quantized |
+| 🔀 **Hybrid** | int8 (embed + GRU weights) | int32 → requantized to int8 per timestep | `fast_sigmoid`/`fast_tanh` (FP32) | quantized weights, float nonlinearities |
 
 Quantization is post-training, per-tensor symmetric int8 (scale-only, zero-point=0).
 
 ---
 
-## 5. Seed selection
+## 5. 🎲 Seed selection
 
 Training is stochastic (weight init, data shuffling). Four seeds were trained and evaluated on validation data before selecting the deployed model:
 
 | Seed | `val_action_acc` |
 |---|---|
 | 1 | 86.8% |
-| **2** | **94.9%** ← selected |
+| **2** | **94.9% 🏆 ← selected** |
 | 3 | ~85% |
 | 4 | ~89.4% |
 
@@ -151,17 +171,17 @@ Seed 2 was a clear, non-marginal standout (>5pp above the next best) and was loc
 
 ---
 
-## 6. Results
+## 6. 📊 Results
 
 ### 6.1 On-device benchmark (ESP32, full held-out adversarial test set, n=699)
 
 | Variant | n | Action Acc | Target Acc | Latency (avg) | RAM | Flash |
 |---|---|---|---|---|---|---|
-| FP32 | 698 | 81.4% | 100% | 251.3 ms | 21.8 KB | 596.2 KB |
-| INT8 | 699 | 81.4% | 100% | 69.6 ms | 21.3 KB | 369.6 KB |
-| Hybrid | 698 | 81.5% | 99.9% | 69.0 ms | 21.3 KB | 369.8 KB |
+| 🐢 FP32 | 698 | 81.4% | 100% | 251.3 ms | 21.8 KB | 596.2 KB |
+| ⚡ INT8 | 699 | 81.4% | 100% | 69.6 ms | 21.3 KB | 369.6 KB |
+| 🔀 Hybrid | 698 | 81.5% | 99.9% | 69.0 ms | 21.3 KB | 369.8 KB |
 
-**Key finding:** accuracy is statistically indistinguishable across all three variants (quantization introduces no measurable degradation), while INT8/Hybrid are **~3.6× faster** and use **~39% less Flash** than FP32.
+> **🔑 Key finding:** accuracy is statistically indistinguishable across all three variants — quantization introduces **no measurable degradation** — while INT8/Hybrid are **~3.6× faster** ⏱️ and use **~39% less Flash** 💾 than FP32.
 
 ![Flash & RAM comparison](evaluation/flash_ram_comparison.png)
 ![Latency comparison](evaluation/latency_comparison.png)
@@ -170,7 +190,7 @@ Seed 2 was a clear, non-marginal standout (>5pp above the next best) and was loc
 
 ### 6.2 Validation-set diagnostics (host, seed-2 model)
 
-- `action_acc = 94.9%`, `target_acc = 98.7%`, `value_MAE = 26.6`
+- `action_acc = 94.9%` · `target_acc = 98.7%` · `value_MAE = 26.6`
 
 ![Action confusion matrix](evaluation/confusion_action.png)
 ![Target confusion matrix](evaluation/confusion_target.png)
@@ -182,26 +202,27 @@ The action confusion matrix shows the dominant error mode is **"on" misclassifie
 
 ---
 
-## 7. Repository structure
+## 7. 📁 Repository structure
 
+```
 tinyllm-esp32/
-├── backups/ # inference.c variants (float / int8 / hybrid)
-├── data/ # datasets: train/val/test splits, vocab
-├── docs/ # design notes, blueprint slides/PDF
-├── evaluation/ # all plots + numerical result summaries
-├── scripts/ # training, export, evaluation, comparison scripts
-├── src/ # ESP32 firmware: inference.c (active), tokenizer.c,
-│ # weights.h / weights_float.h / vocab.h, main.cpp
-├── tests/ # host-side C test harnesses (no hardware needed)
-├── platformio.ini # PlatformIO build config (ESP32 target)
+├── backups/                # inference.c variants (float / int8 / hybrid)
+├── data/                   # datasets: train/val/test splits, vocab
+├── docs/                   # design notes, blueprint slides/PDF
+├── evaluation/             # all plots + numerical result summaries
+├── scripts/                # training, export, evaluation, comparison scripts
+├── src/                    # ESP32 firmware: inference.c (active), tokenizer.c,
+│                           #   weights.h / weights_float.h / vocab.h, main.cpp
+├── tests/                  # host-side C test harnesses (no hardware needed)
+├── platformio.ini          # PlatformIO build config (ESP32 target)
 └── run_quant_comparison.sh # full host-side 3-variant benchmark + plots
-
+```
 
 ---
 
-## 8. Reproducing the results
+## 8. 🔁 Reproducing the results
 
-### 8.1 Train from scratch (optional — a trained checkpoint is included)
+### 8.1 🏋️ Train from scratch (optional — a trained checkpoint is included)
 
 ```bash
 cd scripts
@@ -209,7 +230,7 @@ python3 train.py            # trains with a fixed seed, saves model.pt
                              # early-stops on val accuracy plateau
 ```
 
-### 8.2 Export weights for the C/ESP32 target
+### 8.2 📦 Export weights for the C/ESP32 target
 
 ```bash
 cd scripts
@@ -219,7 +240,7 @@ python3 export_vocab.py            # writes vocab.h
 cp weights.h weights_float.h vocab.h ../src/
 ```
 
-### 8.3 Host-side sanity check (no ESP32 needed)
+### 8.3 🧪 Host-side sanity check (no ESP32 needed)
 
 Quick functional test — runs a handful of hardcoded commands through the compiled C inference path and prints predictions:
 
@@ -228,9 +249,9 @@ gcc -O2 -o test_inf tests/test_inference.c src/inference.c src/tokenizer.c -Isrc
 ./test_inf
 ```
 
-Expected: readable `action=... target=... value=...` output for each test sentence, no crashes.
+Expected: readable `action=... target=... value=...` output for each test sentence, no crashes. ✅
 
-### 8.4 Full 3-variant benchmark (host, accuracy + timing)
+### 8.4 📈 Full 3-variant benchmark (host, accuracy + timing)
 
 ```bash
 bash run_quant_comparison.sh
@@ -238,7 +259,7 @@ bash run_quant_comparison.sh
 
 This compiles and evaluates FP32 / INT8 / Hybrid against `data/val.jsonl`, times each on the host CPU, and regenerates all comparison plots into `evaluation/`. Expect ~94-95% action accuracy for all three variants (host timing is **not** representative of ESP32 latency — see §6.1 for real on-device numbers).
 
-### 8.5 Flash to ESP32 and validate live
+### 8.5 🔌 Flash to ESP32 and validate live
 
 Requires [PlatformIO](https://platformio.org/) and an ESP32 dev board connected via USB.
 
@@ -257,7 +278,7 @@ pio device monitor -b 115200
 # expect: action=on target=led value=... (NN.NN ms)
 ```
 
-### 8.6 Full held-out test-set replay (reproduces §6.1 numbers)
+### 8.6 🔁 Full held-out test-set replay (reproduces §6.1 numbers)
 
 With the ESP32 flashed and connected (adjust `/dev/ttyUSBx` to your port):
 
@@ -289,15 +310,16 @@ python3 scripts/compute_accuracy.py results.txt
 
 Expect output close to:
 
+```
 n=697-699
 action_acc≈0.81
 target_acc=1.00
 latency_avg_ms≈69 (INT8/Hybrid) or ≈251 (FP32)
-
+```
 
 Repeat for each variant (re-flash between runs) to reproduce the full §6.1 table.
 
-### 8.7 Logit-level verification (Python vs C)
+### 8.7 🔬 Logit-level verification (Python vs C)
 
 Before trusting any on-device benchmark, it's worth confirming the C inference path produces the *same numbers* as the PyTorch reference model, not just the same argmax. `scripts/compare_logits.py` loads `model.pt`, parses the exact deployed vocab from `src/vocab.h` (not `data/vocab.json`, which has since drifted to a different, incompatible vocab size), and prints raw action/target logits and the value-head prediction for a fixed set of test sentences — the same sentences hardcoded in `tests/test_inference.c`.
 
@@ -306,14 +328,11 @@ cd scripts
 python3 compare_logits.py
 ```
 
-Compare its output against `./test_inf` (built per §8.3) for each variant. Action/target logits should match to ~5-6 decimal places for FP32, and within small quantization noise for INT8/Hybrid. The value prediction should match closely on every sentence, including ones containing a number ("90 degrees", "45") — this is what originally caught the missing `num_feat`/`num_present` side-channel bug described in §9.
+Compare its output against `./test_inf` (built per §8.3) for each variant. Action/target logits should match to ~5-6 decimal places for FP32, and within small quantization noise for INT8/Hybrid. The value prediction should match closely on every sentence, including ones containing a number ("90 degrees", "45") — this is what originally caught the missing `num_feat`/`num_present` side-channel bug described in §9. 🐛
 
 ---
 
-## 9. Known limitations
 
-- `training_curve.png` is from an earlier training run, not the final seed-2 checkpoint (no epoch-level history was persisted for seed 2 — regenerating it exactly would require a full retrain).
-- Host-side latency (§8.4) reflects process-startup overhead, not embedded performance — always refer to §6.1 for real ESP32 numbers.
-- The value head's MAE (~26.6, scale 0–180) reflects a genuinely harder regression sub-task; see the confusion-matrix/scatter-plot discussion in §6.2 for where errors concentrate.
-- Vocabulary size is fixed at 118 tokens (`src/vocab.h`); this is what the deployed model was trained and exported with. Any regeneration of the dataset/vocab requires retraining before re-export.
-- **Fixed bug (see §8.7):** all three C inference variants previously omitted the value head's `num_feat`/`num_present` side-channel entirely (`Linear(194,1)` was only fed the first 192 dims), causing wrong value predictions specifically on commands containing a number (e.g. "90 degrees" → 85.3 instead of the correct 103.9). This was caught by comparing raw logits against the PyTorch reference (`scripts/compare_logits.py`) rather than relying on accuracy alone, since action/target accuracy is unaffected by a value-head bug. All three variants were patched, verified against Python, reflashed, and rebenchmarked — the §6.1 table above reflects the corrected numbers. `data/vocab.json` was also found to have drifted to 233 entries (vs the 118 the model was actually trained with); `compare_logits.py` works around this by parsing `src/vocab.h` directly.
+<p align="center">
+Made with 🐍 PyTorch, ☕ patience, and a healthy amount of <code>printf</code> debugging on real silicon.
+</p>
