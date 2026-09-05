@@ -1,53 +1,33 @@
 #include <math.h>
 #include <string.h>
-#include <stdint.h>
-#include "weights.h"
-#include "lut_math.h"
+#include "weights_float.h"
+#include "model_api.h"
 #define MAX_LEN 12
 
-static void quantize_h(const float* h, int8_t* h_q, float* scale_out) {
-    float maxabs = 1e-8f;
-    for (int i = 0; i < HIDDEN; i++) {
-        float a = fabsf(h[i]);
-        if (a > maxabs) maxabs = a;
-    }
-    float scale = maxabs / 127.0f;
-    for (int i = 0; i < HIDDEN; i++) h_q[i] = (int8_t)lroundf(h[i] / scale);
-    *scale_out = scale;
-}
-
-static void gru_step(const int8_t* x_q, float* h,
-                      const int8_t* w_ih, float w_ih_scale,
-                      const int8_t* w_hh, float w_hh_scale,
+static void gru_step(const float* x, float* h,
+                      const float* w_ih, const float* w_hh,
                       const float* b_ih, const float* b_hh) {
-    int8_t h_q[HIDDEN];
-    float h_scale;
-    quantize_h(h, h_q, &h_scale);
-
     float gi[3 * HIDDEN];
     float gh[3 * HIDDEN];
     for (int g = 0; g < 3 * HIDDEN; g++) {
-        int32_t acc_i = 0;
-        const int8_t* w_row_i = &w_ih[g * EMB_DIM];
-        for (int k = 0; k < EMB_DIM; k++) acc_i += (int32_t)w_row_i[k] * (int32_t)x_q[k];
-        gi[g] = acc_i * (w_ih_scale * EMBED_W_SCALE) + b_ih[g];
-
-        int32_t acc_h = 0;
-        const int8_t* w_row_h = &w_hh[g * HIDDEN];
-        for (int k = 0; k < HIDDEN; k++) acc_h += (int32_t)w_row_h[k] * (int32_t)h_q[k];
-        gh[g] = acc_h * (w_hh_scale * h_scale) + b_hh[g];
+        float sum_i = b_ih[g];
+        for (int k = 0; k < EMB_DIM; k++) sum_i += w_ih[g * EMB_DIM + k] * x[k];
+        gi[g] = sum_i;
+        float sum_h = b_hh[g];
+        for (int k = 0; k < HIDDEN; k++) sum_h += w_hh[g * HIDDEN + k] * h[k];
+        gh[g] = sum_h;
     }
     float new_h[HIDDEN];
     for (int j = 0; j < HIDDEN; j++) {
-        float r = fast_sigmoid(gi[j] + gh[j]);
-        float z = fast_sigmoid(gi[HIDDEN + j] + gh[HIDDEN + j]);
-        float n = fast_tanh(gi[2 * HIDDEN + j] + r * gh[2 * HIDDEN + j]);
+        float r = 1.0f / (1.0f + expf(-(gi[j] + gh[j])));
+        float z = 1.0f / (1.0f + expf(-(gi[HIDDEN + j] + gh[HIDDEN + j])));
+        float n = tanhf(gi[2 * HIDDEN + j] + r * gh[2 * HIDDEN + j]);
         new_h[j] = (1.0f - z) * n + z * h[j];
     }
     memcpy(h, new_h, sizeof(new_h));
 }
 
-void model_forward(const int ids[MAX_LEN], int length,
+void model_forward(const char* text, const int ids[MAX_LEN], int length,
                     float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out) {
     if (length <= 0) length = 1;
@@ -56,16 +36,15 @@ void model_forward(const int ids[MAX_LEN], int length,
     float h_fwd[HIDDEN];
     memset(h_fwd, 0, sizeof(h_fwd));
     for (int t = 0; t < length; t++) {
-        const int8_t* emb_row = &EMBED_W[ids[t] * EMB_DIM];
-        gru_step(emb_row, h_fwd, GRU_W_IH, GRU_W_IH_SCALE, GRU_W_HH, GRU_W_HH_SCALE, GRU_B_IH, GRU_B_HH);
+        const float* emb = &EMBED_W[ids[t] * EMB_DIM];
+        gru_step(emb, h_fwd, GRU_W_IH, GRU_W_HH, GRU_B_IH, GRU_B_HH);
     }
 
     float h_bwd[HIDDEN];
     memset(h_bwd, 0, sizeof(h_bwd));
     for (int t = length - 1; t >= 0; t--) {
-        const int8_t* emb_row = &EMBED_W[ids[t] * EMB_DIM];
-        gru_step(emb_row, h_bwd, GRU_W_IH_REV, GRU_W_IH_REV_SCALE, GRU_W_HH_REV, GRU_W_HH_REV_SCALE,
-                 GRU_B_IH_REV, GRU_B_HH_REV);
+        const float* emb = &EMBED_W[ids[t] * EMB_DIM];
+        gru_step(emb, h_bwd, GRU_W_IH_REV, GRU_W_HH_REV, GRU_B_IH_REV, GRU_B_HH_REV);
     }
 
     float h_cat[2 * HIDDEN];
@@ -82,7 +61,14 @@ void model_forward(const int ids[MAX_LEN], int length,
         for (int k = 0; k < 2 * HIDDEN; k++) sum += TARGET_W[a * 2 * HIDDEN + k] * h_cat[k];
         target_logits[a] = sum;
     }
+    float num_value;
+    int num_present;
+    extract_number(text, &num_value, &num_present);
+    float num_feat = num_value / 180.0f;
+
     float v = VALUE_B[0];
     for (int k = 0; k < 2 * HIDDEN; k++) v += VALUE_W[k] * h_cat[k];
-    *value_out = fast_sigmoid(v);
+    v += VALUE_W[2 * HIDDEN + 0] * num_feat;
+    v += VALUE_W[2 * HIDDEN + 1] * (float)num_present;
+    *value_out = 1.0f / (1.0f + expf(-v));
 }

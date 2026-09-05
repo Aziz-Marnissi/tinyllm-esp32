@@ -7,7 +7,8 @@
 extern "C" {
 #endif
 int tokenize(const char* text, int out_ids[MAX_LEN]);
-void model_forward(const int ids[MAX_LEN], int length, float action_logits[N_ACTIONS],
+void extract_number(const char* text, float* out_value, int* out_present);
+void model_forward(const char* text, const int ids[MAX_LEN], int length, float action_logits[N_ACTIONS],
                     float target_logits[N_TARGETS], float* value_out);
 #ifdef __cplusplus
 }

@@ -17,12 +17,17 @@ int main() {
         int ids[MAX_LEN];
         int length = tokenize(tests[t], ids);
         float action_logits[N_ACTIONS], target_logits[N_TARGETS], value_out;
-        model_forward(ids, length, action_logits, target_logits, &value_out);
+        model_forward(tests[t], ids, length, action_logits, target_logits, &value_out);
         int best_a = 0, best_t = 0;
         for (int i = 1; i < N_ACTIONS; i++) if (action_logits[i] > action_logits[best_a]) best_a = i;
         for (int i = 1; i < N_TARGETS; i++) if (target_logits[i] > target_logits[best_t]) best_t = i;
         printf("\"%s\"\n", tests[t]);
-        printf("  action=%s target=%s value=%.1f\n\n", ACTIONS[best_a], TARGETS[best_t], value_out * 180.0f);
+        printf("  action=%s target=%s value=%.1f\n", ACTIONS[best_a], TARGETS[best_t], value_out * 180.0f);
+        printf("  action_logits=");
+        for (int i = 0; i < N_ACTIONS; i++) printf("%.6f ", action_logits[i]);
+        printf("\n  target_logits=");
+        for (int i = 0; i < N_TARGETS; i++) printf("%.6f ", target_logits[i]);
+        printf("\n\n");
     }
     return 0;
 }
